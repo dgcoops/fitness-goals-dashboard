@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Road to 17 October 2027</title>
+<style>
+:root {
+  --bg: #f6f5f1; --panel: #ffffff; --ink: #14140f; --muted: #6b6a63; --line: #e2e0d8;
+  --body: #2a78d6; --strength: #eb6834; --running: #1baf7a; --good: #0b7a35; --warn: #a15c00; --ref: #b4b2a9;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121211; --panel: #1c1c1a; --ink: #f0efec; --muted: #a3a199; --line: #2e2e2b;
+    --body: #3987e5; --strength: #e0703f; --running: #22b07f; --good: #4cc77a; --warn: #e0a040; --ref: #5f5e5a; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font: 400 28px/1.2 Georgia, "Times New Roman", serif; margin: 8px 0 6px; }
+h2 { font-size: 17px; font-weight: 600; margin: 0 0 4px; }
+.lede { margin: 0 0 20px; color: var(--muted); }
+.lede b { color: var(--ink); }
+.note { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-top: 16px; }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.tile .k { font-size: 13px; color: var(--muted); }
+.tile .v { font: 400 26px/1.2 Georgia, serif; font-variant-numeric: tabular-nums; margin: 2px 0; }
+.tile .s, .lift .s { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wide { grid-column: 1 / -1; }
+.lift { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.lift .n { font-size: 18px; font-weight: 600; }
+.good { color: var(--good); } .warn { color: var(--warn); }
+.area { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 16px 0 8px; }
+.goal { margin-bottom: 14px; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-variant-numeric: tabular-nums; }
+.row .now { font: 400 19px Georgia, serif; white-space: nowrap; }
+.bar { position: relative; height: 10px; border-radius: 5px; background: var(--line); margin: 6px 0; }
+.fill { position: absolute; inset: 0 auto 0 0; border-radius: 5px; }
+.pace { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
+.sub { font-size: 12.5px; color: var(--muted); }
+.chart { position: relative; margin-top: 8px; }
+.chart svg { display: block; width: 100%; height: auto; }
+.chart text { font-size: 11px; fill: var(--muted); }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; font-size: 12.5px; white-space: nowrap; }
+.empty { color: var(--muted); font-size: 14px; padding: 18px 0; }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 12px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; }
+footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Road to 17 October 2027</h1>
+  <p class="lede" id="lede">Loading…</p>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <h2>Goal progress</h2>
+    <p class="note">Each bar runs from the starting point to the target. The dark tick is where a steady pace from start to deadline would be today.</p>
+    <div id="goals"></div>
+  </section>
+
+  <section>
+    <h2>Body weight</h2>
+    <p class="note">Dots are weigh-ins, the line is the 7-day average, and the dashed line is a steady path to the target.</p>
+    <div class="chart" id="chart-weight"></div>
+  </section>
+
+  <section>
+    <h2>Body fat</h2>
+    <p class="note">Scale readings swing with hydration, so follow the 7-day average line.</p>
+    <div class="chart" id="chart-fat"></div>
+  </section>
+
+  <section>
+    <h2>Key lifts</h2>
+    <p class="note">Estimated one-rep max from the best set each session, so progress shows even when the set of 5 is not tested.</p>
+    <div class="chart" id="chart-lifts"></div>
+  </section>
+
+  <section>
+    <h2>Gym visits per week</h2>
+    <p class="note">Against a plan of three sessions a week.</p>
+    <div class="chart" id="chart-gym"></div>
+  </section>
+
+  <section>
+    <h2>Evening nutrition check-ins</h2>
+    <p class="note">Water in litres against a 4 L aim; energy and hunger out of 10.</p>
+    <div class="scroll" id="checkins"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const f1 = (v) => (Math.round(v * 10) / 10).toFixed(1);
+const kg = (v) => +(+v).toFixed(2) + ' kg';
+const signed = (v, unit) => (v > 0 ? '+' : v < 0 ? '-' : '±') + f1(Math.abs(v)) + unit;
+const day = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+const clock = (s) => { s = Math.round(s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = String(s % 60).padStart(2, '0'); return h ? h + ':' + String(m).padStart(2, '0') + ':' + ss : m + ':' + ss; };
+const show = (v, unit) => v === null || v === undefined ? 'Not set' : unit === 'time' ? clock(v) : unit === '%' ? f1(v) + '%' : kg(v);
+const AREA = { Body: '--body', Strength: '--strength', Running: '--running' };
+
+function tile(label, value, sub, wide) {
+  const t = el('div', 'tile' + (wide ? ' wide' : ''));
+  t.append(el('div', 'k', label));
+  if (value !== undefined) t.append(el('div', 'v', value));
+  if (sub) { const s = el('div', 's'); s.append(...[].concat(sub)); t.append(s); }
+  return t;
+}
+function change(text, cls) { return el('span', cls || '', text); }
+
+function renderTiles(d) {
+  const t = d.tiles, box = $('tiles');
+  const body = (x, unit, label) => {
+    if (x.value === null) return tile(label, '—', 'No weigh-ins last week');
+    const sub = x.prev === null ? ['No week before to compare']
+      : ['Week before ' + f1(x.prev) + ' · ', change(signed(x.delta, unit), x.delta < 0 ? 'good' : x.delta > 0 ? 'warn' : '')];
+    return tile(label, f1(x.value) + (unit === ' kg' ? ' kg' : '%'), sub);
+  };
+  box.append(body(t.weight, ' kg', 'Body weight, weekly average'), body(t.bodyfat, '% bf', 'Body fat, weekly average'));
+
+  if (!t.distance) box.append(tile('Distance last week', '—', 'Waiting for the Garmin connection'));
+  else box.append(tile('Distance last week', f1(t.distance.value) + ' km',
+    ['Week before ' + f1(t.distance.prev) + ' km' + (t.distance.pct === null ? '' : ' · '),
+     t.distance.pct === null ? '' : change((t.distance.pct > 0 ? '+' : '') + t.distance.pct + '%', t.distance.pct > 10 ? 'warn' : t.distance.pct > 0 ? 'good' : '')]));
+
+  if (!t.gym.connected) box.append(tile('Gym visits last week', '—', 'Waiting for the first Hevy sync'));
+  else box.append(tile('Gym visits last week', t.gym.value + ' of ' + t.gym.planned,
+    'Week before ' + t.gym.prev + ' of ' + t.gym.planned + ' · ' + t.gym.total + ' total'));
+
+  const lifts = tile('Best set of 5 last week', undefined, null, true);
+  for (const l of t.lifts) {
+    const r = el('div', 'lift');
+    r.append(el('span', '', l.name));
+    const right = el('span');
+    if (l.value === null) {
+      right.append(el('span', 's', l.last_known ? 'Not lifted last week · last ' + kg(l.last_known) : 'No set of 5 logged yet'));
+    } else {
+      right.append(el('span', 'n', kg(l.value)), ' ');
+      const s = el('span', 's');
+      if (l.prev === null) s.textContent = 'no week before';
+      else s.append('was ' + kg(l.prev) + ' · ', l.delta === 0 ? 'level' : change((l.delta > 0 ? '+' : '-') + kg(Math.abs(l.delta)), l.delta > 0 ? 'good' : ''));
+      right.append(s);
+    }
+    r.append(right);
+    lifts.append(r);
+  }
+  box.append(lifts);
+}
+
+function renderGoals(d) {
+  const box = $('goals');
+  let area = null;
+  for (const g of d.goals) {
+    if (g.area !== area) { area = g.area; box.append(el('div', 'area', area)); }
+    const w = el('div', 'goal');
+    const top = el('div', 'row');
+    top.append(el('span', '', g.goal), el('span', 'now', show(g.current, g.unit)));
+    const bar = el('div', 'bar'), fill = el('div', 'fill'), pace = el('div', 'pace');
+    fill.style.width = (g.pct || 0) + '%';
+    fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
+    pace.style.left = 'calc(' + g.pace + '% - 1px)';
+    bar.append(fill, pace);
+    const bot = el('div', 'row sub');
+    bot.append(el('span', '', (g.start === null ? 'Target ' + show(g.target, g.unit) : 'From ' + show(g.start, g.unit) + ' to ' + show(g.target, g.unit)) + ' · ' + g.basis),
+               el('span', '', g.pct === null ? '—' : g.pct + '%'));
+    w.append(top, bar, bot);
+    box.append(w);
+  }
+}
+
+// A small line chart. series: [{name, color, points:[{x: Date, y, label}], dots, dash}]
+function lineChart(host, series, opts) {
+  opts = opts || {};
+  const all = series.flatMap((s) => s.points);
+  if (!all.length) { host.replaceChildren(el('div', 'empty', opts.empty || 'No data yet.')); return; }
+  const W = Math.max(300, host.clientWidth), H = 220, m = { t: 14, r: 14, b: 26, l: 40 };
+  const xs = all.map((p) => +p.x).concat(opts.xMin ? [+opts.xMin] : [], opts.xMax ? [+opts.xMax] : []);
+  const ys = all.map((p) => p.y).concat(opts.yInclude || []);
+  let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  if (x0 === x1) x1 = x0 + 864e5 * 7;
+  const pad = (y1 - y0 || 1) * 0.08; y0 -= pad; y1 += pad;
+  const X = (v) => m.l + (v - x0) / (x1 - x0) * (W - m.l - m.r), Y = (v) => H - m.b - (v - y0) / (y1 - y0) * (H - m.t - m.b);
+  const NS = 'http://www.w3.org/2000/svg';
+  const s = (tag, attrs, text) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (text !== undefined) n.textContent = text; return n; };
+  const svg = s('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': opts.label || 'Chart' });
+  for (let i = 0; i <= 4; i++) {
+    const v = y0 + (y1 - y0) * i / 4;
+    svg.append(s('line', { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), stroke: css('--line') }),
+               s('text', { x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end' }, f1(v)));
+  }
+  const ticks = Math.max(2, Math.min(6, Math.floor(W / 110)));
+  for (let i = 0; i <= ticks; i++) {
+    const v = x0 + (x1 - x0) * i / ticks;
+    svg.append(s('text', { x: X(v), y: H - 6, 'text-anchor': i === 0 ? 'start' : i === ticks ? 'end' : 'middle' },
+      new Date(v).toLocaleDateString('en-GB', { month: 'short', year: '2-digit', timeZone: 'UTC' })));
+  }
+  for (const r of opts.refs || []) {
+    svg.append(s('line', { x1: X(+r.from.x), y1: Y(r.from.y), x2: X(+r.to.x), y2: Y(r.to.y), stroke: css('--ref'), 'stroke-dasharray': '4 4' }));
+    if (r.text) svg.append(s('text', { x: W - m.r, y: Y(r.to.y) - 6, 'text-anchor': 'end' }, r.text));
+  }
+  const tip = el('div', 'tip'); tip.hidden = true;
+  for (const sr of series) {
+    const col = css(sr.color);
+    if (!sr.dots && sr.points.length > 1)
+      svg.append(s('path', { d: sr.points.map((p, i) => (i ? 'L' : 'M') + X(+p.x) + ' ' + Y(p.y)).join(' '), fill: 'none', stroke: col, 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-dasharray': sr.dash || '' }));
+    for (const p of sr.points) {
+      svg.append(s('circle', { cx: X(+p.x), cy: Y(p.y), r: sr.dots ? 2.5 : (sr.points.length < 30 ? 3.5 : 0), fill: col, opacity: sr.dots ? 0.45 : 1 }));
+      if (sr.dots) continue;
+      const hit = s('circle', { cx: X(+p.x), cy: Y(p.y), r: 14, fill: 'transparent' });
+      const on = () => {
+        tip.textContent = p.label; tip.hidden = false;
+        const k = host.clientWidth / W;
+        tip.style.left = Math.max(0, Math.min(host.clientWidth - tip.offsetWidth, X(+p.x) * k - tip.offsetWidth / 2)) + 'px';
+        tip.style.top = Math.max(0, Y(p.y) * k - tip.offsetHeight - 10) + 'px';
+      };
+      hit.addEventListener('pointerenter', on); hit.addEventListener('pointerdown', on);
+      hit.addEventListener('pointerleave', () => { tip.hidden = true; });
+      svg.append(hit);
+    }
+  }
+  const wrap = [svg, tip];
+  if (series.filter((x) => x.name).length > 1) {
+    const lg = el('div', 'sub'); lg.style.cssText = 'display:flex;gap:14px;flex-wrap:wrap;margin-top:6px';
+    for (const sr of series) if (sr.name) { const i = el('span'); const sw = el('span'); sw.style.cssText = 'display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;background:var(' + sr.color + ')'; i.append(sw, sr.name); lg.append(i); }
+    wrap.push(lg);
+  }
+  host.replaceChildren(...wrap);
+}
+
+function barChart(host, items, planned, empty) {
+  if (!items.length) { host.replaceChildren(el('div', 'empty', empty)); return; }
+  const max = Math.max(planned, ...items.map((i) => i.visits));
+  const box = el('div'); box.style.cssText = 'display:flex;align-items:flex-end;gap:4px;height:120px;border-bottom:1px solid var(--line)';
+  for (const i of items.slice(-26)) {
+    const b = el('div'); b.title = 'Week of ' + day(i.week) + ': ' + i.visits;
+    b.style.cssText = 'flex:1;max-width:24px;border-radius:4px 4px 0 0;background:var(--strength);height:' + Math.max(2, i.visits / max * 100) + '%;opacity:' + (i.visits >= planned ? 1 : 0.5);
+    box.append(b);
+  }
+  const cap = el('div', 'sub', 'Latest ' + Math.min(26, items.length) + ' weeks, oldest on the left. Solid bars met the plan of ' + planned + '.');
+  cap.style.marginTop = '6px';
+  host.replaceChildren(box, cap);
+}
+
+function renderCharts(d) {
+  const D = (iso) => new Date(iso + 'T00:00:00Z');
+  const w = d.series.weight;
+  const goal = (id) => d.goals.find((g) => g.id === id);
+  const body = (id, raw, avg, unit, host, color) => {
+    const g = goal(id);
+    const refs = g && g.start !== null && w.length ? [{ from: { x: D(w[0].date), y: g.start }, to: { x: D(g.deadline), y: g.target }, text: 'Target ' + show(g.target, g.unit) }] : [];
+    const rows = w.filter((r) => r[raw] !== null);
+    lineChart($(host), [
+      { color, dots: true, points: rows.map((r) => ({ x: D(r.date), y: r[raw] })) },
+      { color, points: rows.map((r) => ({ x: D(r.date), y: r[avg], label: day(r.date) + ' · 7-day average ' + f1(r[avg]) + unit + ' · reading ' + f1(r[raw]) + unit })) },
+    ], { refs, xMax: g ? D(g.deadline) : null, yInclude: g ? [g.target] : [], label: g ? g.goal + ' over time against the path to target' : '', empty: 'No weigh-ins yet.' });
+  };
+  body('weight', 'kg', 'avg_kg', ' kg', 'chart-weight', '--body');
+  body('bodyfat', 'fat', 'avg_fat', '%', 'chart-fat', '--body');
+
+  const cols = { squat: '--strength', bench: '--body', deadlift: '--running' }, names = { squat: 'Squat', bench: 'Bench', deadlift: 'Deadlift' };
+  lineChart($('chart-lifts'), Object.keys(names).map((k) => ({ name: names[k], color: cols[k],
+    points: (d.series.lifts[k] || []).map((p) => ({ x: D(p.date), y: p.e1rm, label: names[k] + ' · ' + day(p.date) + ' · est. max ' + kg(p.e1rm) + (p.kg ? ' · set of 5 at ' + kg(p.kg) : '') })) })),
+    { label: 'Estimated one-rep max for squat, bench and deadlift over time', empty: 'Lift history appears after the first Hevy sync.' });
+
+  barChart($('chart-gym'), d.tiles.gym.connected ? d.series.gym_weeks : [], d.tiles.gym.planned, 'Gym visits appear after the first Hevy sync.');
+}
+
+function renderCheckins(d) {
+  const rows = (d.checkins || []).slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 14);
+  if (!rows.length) { $('checkins').replaceChildren(el('div', 'empty', 'No check-ins yet.')); return; }
+  const t = el('table'), head = el('tr');
+  for (const h of ['Date', 'Protein every meal', 'Water', 'Veg', 'Energy', 'Hunger', 'Off plan']) head.append(el('th', '', h));
+  t.append(head);
+  for (const r of rows) {
+    const tr = el('tr');
+    for (const c of [day(r.date), r.protein_every_meal, r.water_l + ' L', r.veg_portions, r.energy, r.hunger, r.off_plan]) tr.append(el('td', '', c || '—'));
+    t.append(tr);
+  }
+  $('checkins').replaceChildren(t);
+}
+
+let DATA = null;
+function render() {
+  const d = DATA;
+  const moved = d.goals.filter((g) => g.pct > 0).length;
+  const days = Math.max(0, Math.ceil((new Date(d.final_day + 'T00:00:00Z') - Date.now()) / 864e5));
+  const lede = $('lede');
+  lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles compare the week of ' + day(d.week.start) + ' to ' + day(d.week.end) + ' with the week before.');
+  $('tiles').replaceChildren(); $('goals').replaceChildren();
+  renderTiles(d); renderGoals(d); renderCharts(d); renderCheckins(d);
+  $('foot').textContent = 'Data refreshed ' + new Date(d.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '.';
+}
+fetch('data.json', { cache: 'no-store' }).then((r) => r.json()).then((d) => { DATA = d; render(); })
+  .catch(() => { $('lede').textContent = 'The dashboard data could not be loaded.'; });
+let timer; addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(() => DATA && renderCharts(DATA), 150); });
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Static site, nothing to build"
+  artifacts:
+    baseDirectory: site
+    files:
+      - "**/*"

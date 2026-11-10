@@ -1,0 +1,189 @@
+{
+ "generated": "2026-11-10T21:04+00:00",
+ "final_day": "2027-10-17",
+ "week": {
+  "start": "2026-11-02",
+  "end": "2026-11-08"
+ },
+ "tiles": {
+  "weight": {
+   "value": 104.5,
+   "prev": null,
+   "delta": null
+  },
+  "bodyfat": {
+   "value": 24.7,
+   "prev": null,
+   "delta": null
+  },
+  "distance": null,
+  "gym": {
+   "value": 0,
+   "prev": 0,
+   "planned": 3,
+   "total": 0,
+   "connected": false
+  },
+  "lifts": [
+   {
+    "id": "squat",
+    "name": "Squat",
+    "value": null,
+    "prev": null,
+    "delta": null,
+    "last_known": null
+   },
+   {
+    "id": "bench",
+    "name": "Bench",
+    "value": null,
+    "prev": null,
+    "delta": null,
+    "last_known": null
+   },
+   {
+    "id": "deadlift",
+    "name": "Deadlift",
+    "value": null,
+    "prev": null,
+    "delta": null,
+    "last_known": null
+   }
+  ]
+ },
+ "goals": [
+  {
+   "id": "weight",
+   "goal": "Body weight",
+   "area": "Body",
+   "unit": "kg",
+   "start": 104.5,
+   "current": 104.5,
+   "target": 95.0,
+   "pct": 0,
+   "pace": 1,
+   "basis": "Withings weigh-in",
+   "deadline": "2027-10-17"
+  },
+  {
+   "id": "bodyfat",
+   "goal": "Body fat",
+   "area": "Body",
+   "unit": "%",
+   "start": 24.7,
+   "current": 24.7,
+   "target": 10.0,
+   "pct": 0,
+   "pace": 1,
+   "basis": "Withings weigh-in",
+   "deadline": "2027-10-17"
+  },
+  {
+   "id": "bench",
+   "goal": "Bench press 1x5",
+   "area": "Strength",
+   "unit": "kg",
+   "start": 40.0,
+   "current": 40.0,
+   "target": 95.0,
+   "pct": 0,
+   "pace": 1,
+   "basis": "Planned starting weight",
+   "deadline": "2027-10-17"
+  },
+  {
+   "id": "squat",
+   "goal": "Squat 1x5",
+   "area": "Strength",
+   "unit": "kg",
+   "start": 50.0,
+   "current": 50.0,
+   "target": 142.5,
+   "pct": 0,
+   "pace": 1,
+   "basis": "Planned starting weight",
+   "deadline": "2027-10-17"
+  },
+  {
+   "id": "deadlift",
+   "goal": "Deadlift 1x5",
+   "area": "Strength",
+   "unit": "kg",
+   "start": 70.0,
+   "current": 70.0,
+   "target": 190.0,
+   "pct": 0,
+   "pace": 1,
+   "basis": "Planned starting weight",
+   "deadline": "2027-10-17"
+  },
+  {
+   "id": "parkrun",
+   "goal": "parkrun 5k",
+   "area": "Running",
+   "unit": "time",
+   "start": 1710.0,
+   "current": 1710.0,
+   "target": 1200.0,
+   "pct": 0,
+   "pace": 1,
+   "basis": "Estimate of 28-29 min",
+   "deadline": "2027-10-16"
+  },
+  {
+   "id": "half",
+   "goal": "Royal Parks Half",
+   "area": "Running",
+   "unit": "time",
+   "start": null,
+   "current": null,
+   "target": 6300.0,
+   "pct": null,
+   "pace": 1,
+   "basis": "No baseline yet",
+   "deadline": "2027-10-10"
+  }
+ ],
+ "series": {
+  "weight": [
+   {
+    "date": "2026-11-08",
+    "kg": 104.5,
+    "fat": 24.7,
+    "avg_kg": 104.5,
+    "avg_fat": 24.7
+   }
+  ],
+  "lifts": {
+   "squat": [],
+   "bench": [],
+   "deadlift": []
+  },
+  "gym_weeks": [
+   {
+    "week": "2026-11-02",
+    "visits": 0
+   }
+  ]
+ },
+ "checkins": [
+  {
+   "date": "2026-11-03",
+   "protein_every_meal": "Yes",
+   "water_l": "2",
+   "veg_portions": "4",
+   "energy": "6",
+   "hunger": "0",
+   "off_plan": "None"
+  },
+  {
+   "date": "2026-11-10",
+   "protein_every_meal": "Yes",
+   "water_l": "2",
+   "veg_portions": "6",
+   "energy": "8",
+   "hunger": "3",
+   "off_plan": "Jelly tots; cashews; protein yoghurt"
+  }
+ ]
+}
