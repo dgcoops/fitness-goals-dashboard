@@ -171,15 +171,16 @@ function renderGoals(d) {
     const w = el('div', 'goal');
     const smart = el('div', 'smart', g.smart || g.goal);
     const top = el('div', 'row ends');
+    const fmt = (v) => (g.area === 'Body' && g.unit === 'kg' ? f1(v) + ' kg' : show(v, g.unit));
     const end = (label, value) => { const e = el('span'); e.append(el('span', 'lbl', label), el('span', 'end', value)); return e; };
-    top.append(end('Start', g.start === null ? '—' : show(g.start, g.unit)), end('Goal', show(g.target, g.unit)));
+    top.append(end('Start', g.start === null ? '—' : fmt(g.start)), end('Goal', fmt(g.target)));
     const bar = el('div', 'bar'), fill = el('div', 'fill'), pace = el('div', 'pace');
     fill.style.width = (g.pct || 0) + '%';
     fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
     pace.style.left = 'calc(' + g.pace + '% - 1px)';
     bar.append(fill, pace);
     const bot = el('div', 'row sub');
-    bot.append(el('span', '', g.current === null ? g.basis : 'Now ' + show(g.current, g.unit)),
+    bot.append(el('span', '', g.current === null ? g.basis : 'Now ' + fmt(g.current)),
                el('span', '', g.pct === null ? '—' : g.pct + '%'));
     w.append(smart, top, bar, bot);
     box.append(w);
