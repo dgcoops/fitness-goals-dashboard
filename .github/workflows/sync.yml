@@ -23,6 +23,10 @@ jobs:
         env:
           HEVY_API_KEY: ${{ secrets.HEVY_API_KEY }}
         run: python scripts/hevy_sync.py
+      - name: Pull Garmin activities
+        env:
+          GARMIN_API_KEY: ${{ secrets.GARMIN_API_KEY }}
+        run: python scripts/garmin_sync.py
       - name: Build dashboard data
         run: python scripts/build.py
       - name: Commit new data
