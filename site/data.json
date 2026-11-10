@@ -21,7 +21,7 @@
    "value": 0,
    "prev": 0,
    "planned": 3,
-   "total": 8,
+   "total": 1,
    "connected": true
   },
   "lifts": [
@@ -31,7 +31,7 @@
     "value": null,
     "prev": null,
     "delta": null,
-    "last_known": 80.0
+    "last_known": null
    },
    {
     "id": "bench",
@@ -39,7 +39,7 @@
     "value": null,
     "prev": null,
     "delta": null,
-    "last_known": 60.0
+    "last_known": null
    },
    {
     "id": "deadlift",
@@ -47,7 +47,7 @@
     "value": null,
     "prev": null,
     "delta": null,
-    "last_known": 105.0
+    "last_known": null
    }
   ]
  },
@@ -84,11 +84,11 @@
    "area": "Strength",
    "unit": "kg",
    "start": 40.0,
-   "current": 60.0,
+   "current": 40.0,
    "target": 95.0,
-   "pct": 36,
+   "pct": 0,
    "pace": 1,
-   "basis": "Best logged set of 5 in Hevy",
+   "basis": "Planned starting weight",
    "deadline": "2027-10-17"
   },
   {
@@ -97,9 +97,9 @@
    "area": "Strength",
    "unit": "kg",
    "start": 50.0,
-   "current": 80.0,
+   "current": 40.0,
    "target": 142.5,
-   "pct": 32,
+   "pct": 0,
    "pace": 1,
    "basis": "Best logged set of 5 in Hevy",
    "deadline": "2027-10-17"
@@ -110,11 +110,11 @@
    "area": "Strength",
    "unit": "kg",
    "start": 70.0,
-   "current": 105.0,
+   "current": 70.0,
    "target": 190.0,
-   "pct": 29,
+   "pct": 0,
    "pace": 1,
-   "basis": "Best logged set of 5 in Hevy",
+   "basis": "Planned starting weight",
    "deadline": "2027-10-17"
   },
   {
@@ -157,54 +157,15 @@
   "lifts": {
    "squat": [
     {
-     "date": "2025-04-27",
-     "kg": 80.0,
-     "e1rm": 93.3
-    },
-    {
      "date": "2026-11-09",
      "kg": 40.0,
      "e1rm": 46.7
     }
    ],
-   "bench": [
-    {
-     "date": "2025-04-14",
-     "kg": 50.0,
-     "e1rm": 61.7
-    },
-    {
-     "date": "2025-04-24",
-     "kg": 60.0,
-     "e1rm": 70.0
-    }
-   ],
-   "deadlift": [
-    {
-     "date": "2025-04-09",
-     "kg": 90.0,
-     "e1rm": 105.0
-    },
-    {
-     "date": "2025-04-23",
-     "kg": 105.0,
-     "e1rm": 122.5
-    }
-   ]
+   "bench": [],
+   "deadlift": []
   },
   "gym_weeks": [
-   {
-    "week": "2025-04-07",
-    "visits": 2
-   },
-   {
-    "week": "2025-04-14",
-    "visits": 2
-   },
-   {
-    "week": "2025-04-21",
-    "visits": 3
-   },
    {
     "week": "2026-11-02",
     "visits": 0

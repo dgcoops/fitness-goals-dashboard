@@ -86,7 +86,11 @@ def main():
         return {"value": cur, "prev": prev, "delta": delta}
 
     # ---- gym ----
-    sets = rows(DATA / "hevy" / "sets.csv")
+    # Only training since the goals began counts; older Hevy history is ignored.
+    goal_rows = rows(DATA / "manual" / "goals.csv")
+    began = min((date.fromisoformat(g["start_date"]) for g in goal_rows), default=date.min)
+    all_sets = rows(DATA / "hevy" / "sets.csv")
+    sets = [s for s in all_sets if s.get("date") and date.fromisoformat(s["date"]) >= began]
     workout_days = {}
     for s in sets:
         if s.get("workout_id") and s.get("date"):
@@ -134,7 +138,7 @@ def main():
 
     # ---- goals ----
     goals = []
-    for g in rows(DATA / "manual" / "goals.csv"):
+    for g in goal_rows:
         start, current, target = num(g["start"]), num(g["current"]), num(g["target"])
         basis = g["basis"]
         if g["id"] == "weight" and series_weight:
@@ -163,7 +167,7 @@ def main():
             "bodyfat": body_tile("fat"),
             "distance": distance,
             "gym": {"value": visits.get(last_mon, 0), "prev": visits.get(prev_mon, 0),
-                    "planned": PLANNED_GYM_VISITS, "total": len(workout_days), "connected": bool(sets)},
+                    "planned": PLANNED_GYM_VISITS, "total": len(workout_days), "connected": bool(all_sets)},
             "lifts": lift_tiles,
         },
         "goals": goals,
