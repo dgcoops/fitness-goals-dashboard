@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:10+00:00",
+ "generated": "2026-11-10T21:18+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -85,7 +85,7 @@
    "unit": "kg",
    "start": 20.0,
    "current": 20.0,
-   "target": 95.0,
+   "target": 100.0,
    "pct": 0,
    "pace": 1,
    "basis": "Starting weight",
