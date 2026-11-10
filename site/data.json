@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:37+00:00",
+ "generated": "2026-11-10T22:08+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -62,7 +62,7 @@
    "area": "Body",
    "unit": "kg",
    "start": 104.5,
-   "current": 104.5,
+   "current": 105.4,
    "target": 95.0,
    "pct": 0,
    "pace": 1,
@@ -75,7 +75,7 @@
    "area": "Body",
    "unit": "%",
    "start": 24.7,
-   "current": 24.7,
+   "current": 26.6,
    "target": 10.0,
    "pct": 0,
    "pace": 1,
@@ -152,12 +152,30 @@
   "weight": [
    {
     "date": "2026-11-08",
-    "kg": 104.5,
+    "kg": 104.45,
     "fat": 24.7,
     "avg_kg": 104.5,
     "avg_fat": 24.7,
-    "fat_mass": null,
-    "lean": null
+    "fat_mass": 25.8,
+    "lean": 78.65
+   },
+   {
+    "date": "2026-11-09",
+    "kg": 106.58,
+    "fat": 27.88,
+    "avg_kg": 105.5,
+    "avg_fat": 26.3,
+    "fat_mass": 29.71,
+    "lean": 76.87
+   },
+   {
+    "date": "2026-11-10",
+    "kg": 105.06,
+    "fat": 27.13,
+    "avg_kg": 105.4,
+    "avg_fat": 26.6,
+    "fat_mass": 28.5,
+    "lean": 76.56
    }
   ],
   "lifts": {
