@@ -171,7 +171,7 @@ function renderGoals(d) {
     const w = el('div', 'goal');
     const smart = el('div', 'smart', g.smart || g.goal);
     const top = el('div', 'row ends');
-    const fmt = (v) => (g.area === 'Body' && g.unit === 'kg' ? f1(v) + ' kg' : show(v, g.unit));
+    const fmt = (v) => (g.area === 'Body' && g.unit === 'kg' ? +(+v).toFixed(1) + ' kg' : show(v, g.unit));
     const end = (label, value) => { const e = el('span'); e.append(el('span', 'lbl', label), el('span', 'end', value)); return e; };
     top.append(end('Start', g.start === null ? '—' : fmt(g.start)), end('Goal', fmt(g.target)));
     const bar = el('div', 'bar'), fill = el('div', 'fill'), pace = el('div', 'pace');
