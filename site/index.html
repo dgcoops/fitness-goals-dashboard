@@ -62,7 +62,7 @@ footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
 
   <section>
     <h2>Goal progress</h2>
-    <p class="note">Each bar runs from the starting point to the target. The dark tick is where a steady pace from start to deadline would be today.</p>
+    <p class="note">Each bar runs from the starting point to the target shown on the right. The dark tick is where a steady pace from start to deadline would be today.</p>
     <div id="goals"></div>
   </section>
 
@@ -166,14 +166,14 @@ function renderGoals(d) {
     if (g.area !== area) { area = g.area; box.append(el('div', 'area', area)); }
     const w = el('div', 'goal');
     const top = el('div', 'row');
-    top.append(el('span', '', g.goal), el('span', 'now', show(g.current, g.unit)));
+    top.append(el('span', '', g.goal), el('span', 'now', show(g.target, g.unit)));
     const bar = el('div', 'bar'), fill = el('div', 'fill'), pace = el('div', 'pace');
     fill.style.width = (g.pct || 0) + '%';
     fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
     pace.style.left = 'calc(' + g.pace + '% - 1px)';
     bar.append(fill, pace);
     const bot = el('div', 'row sub');
-    bot.append(el('span', '', (g.start === null ? 'Target ' + show(g.target, g.unit) : 'From ' + show(g.start, g.unit) + ' to ' + show(g.target, g.unit)) + ' · ' + g.basis),
+    bot.append(el('span', '', (g.current === null ? g.basis : 'Now ' + show(g.current, g.unit) + ' · started at ' + show(g.start, g.unit))),
                el('span', '', g.pct === null ? '—' : g.pct + '%'));
     w.append(top, bar, bot);
     box.append(w);
