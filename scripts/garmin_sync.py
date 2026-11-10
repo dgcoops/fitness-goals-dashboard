@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pull Garmin activities since the goals began and write them to data/garmin/.
+"""Pull Garmin activities since 1 October 2026 and write them to data/garmin/.
 
 Uses Garmin's Personal API. Reads the personal API key from GARMIN_API_KEY and
 skips quietly when it is not set, so the workflow still passes before the key
@@ -47,9 +47,9 @@ def call(path, headers, method="GET", params=None):
             sys.exit(f"Could not reach Garmin: {err.reason}")
 
 
-def goals_began():
-    with open(ROOT / "data" / "manual" / "goals.csv", newline="") as fh:
-        return min(r["start_date"] for r in csv.DictReader(fh))
+# Pull a little history before the goals began, so recent baselines (such as the
+# last parkrun before the start) are kept. The dashboard decides what counts.
+HISTORY_START = "2026-10-01"
 
 
 def main():
@@ -64,7 +64,7 @@ def main():
     activities, start = [], 0
     while True:
         body = call("/activitylist-service/activities/search/activities", auth,
-                    params={"start": start, "limit": PAGE, "startDate": goals_began(), "endDate": date.today().isoformat()})
+                    params={"start": start, "limit": PAGE, "startDate": HISTORY_START, "endDate": date.today().isoformat()})
         page = json.loads(body) if body else []
         if not isinstance(page, list):
             sys.exit("Garmin returned an unexpected activity list shape")
