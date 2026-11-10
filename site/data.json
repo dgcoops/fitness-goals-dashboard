@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:30+00:00",
+ "generated": "2026-11-10T21:37+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -155,7 +155,9 @@
     "kg": 104.5,
     "fat": 24.7,
     "avg_kg": 104.5,
-    "avg_fat": 24.7
+    "avg_fat": 24.7,
+    "fat_mass": null,
+    "lean": null
    }
   ],
   "lifts": {

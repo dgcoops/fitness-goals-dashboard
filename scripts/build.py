@@ -66,18 +66,22 @@ def main():
         return start <= d < start + timedelta(days=7)
 
     # ---- body ----
+    goal_starts = [date.fromisoformat(g["start_date"]) for g in rows(DATA / "manual" / "goals.csv")]
+    first_day = min(goal_starts) if goal_starts else date.min
     weigh = []
     for r in rows(DATA / "withings" / "weight.csv") or rows(DATA / "manual" / "weight.csv"):
-        kg = num(r.get("weight_kg"))
-        if kg is not None:
-            weigh.append({"date": date.fromisoformat(r["date"][:10]), "kg": kg, "fat": num(r.get("fat_pct"))})
+        kg, d = num(r.get("weight_kg")), date.fromisoformat(r["date"][:10])
+        if kg is not None and d >= first_day:
+            weigh.append({"date": d, "kg": kg, "fat": num(r.get("fat_pct")),
+                          "fat_mass": num(r.get("fat_mass_kg")), "lean": num(r.get("lean_mass_kg"))})
     weigh.sort(key=lambda r: r["date"])
     series_weight = []
     for r in weigh:
         window = [w for w in weigh if r["date"] - timedelta(days=6) <= w["date"] <= r["date"]]
         series_weight.append({"date": r["date"].isoformat(), "kg": r["kg"], "fat": r["fat"],
                               "avg_kg": mean([w["kg"] for w in window]),
-                              "avg_fat": mean([w["fat"] for w in window])})
+                              "avg_fat": mean([w["fat"] for w in window]),
+                              "fat_mass": r["fat_mass"], "lean": r["lean"]})
 
     def body_tile(field):
         cur = mean([w[field] for w in weigh if in_week(w["date"], last_mon)])
