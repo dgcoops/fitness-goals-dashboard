@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:08+00:00",
+ "generated": "2026-11-10T21:10+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -83,12 +83,12 @@
    "goal": "Bench press 1x5",
    "area": "Strength",
    "unit": "kg",
-   "start": 40.0,
-   "current": 40.0,
+   "start": 20.0,
+   "current": 20.0,
    "target": 95.0,
    "pct": 0,
    "pace": 1,
-   "basis": "Planned starting weight",
+   "basis": "Starting weight",
    "deadline": "2027-10-17"
   },
   {
@@ -96,10 +96,10 @@
    "goal": "Squat 1x5",
    "area": "Strength",
    "unit": "kg",
-   "start": 50.0,
+   "start": 30.0,
    "current": 40.0,
    "target": 142.5,
-   "pct": 0,
+   "pct": 9,
    "pace": 1,
    "basis": "Best logged set of 5 in Hevy",
    "deadline": "2027-10-17"
@@ -109,12 +109,12 @@
    "goal": "Deadlift 1x5",
    "area": "Strength",
    "unit": "kg",
-   "start": 70.0,
-   "current": 70.0,
+   "start": 40.0,
+   "current": 40.0,
    "target": 190.0,
    "pct": 0,
    "pace": 1,
-   "basis": "Planned starting weight",
+   "basis": "Starting weight",
    "deadline": "2027-10-17"
   },
   {
