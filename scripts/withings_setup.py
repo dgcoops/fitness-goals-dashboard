@@ -12,6 +12,7 @@ import http.server
 import json
 import secrets
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 import webbrowser
@@ -43,8 +44,11 @@ def main():
             body = urllib.parse.urlencode({
                 "action": "requesttoken", "grant_type": "authorization_code", "client_id": client_id,
                 "client_secret": client_secret, "code": q["code"][0], "redirect_uri": REDIRECT}).encode()
-            with urllib.request.urlopen(urllib.request.Request(TOKEN_URL, data=body), timeout=30) as r:
-                result.update(json.load(r))
+            try:
+                with urllib.request.urlopen(urllib.request.Request(TOKEN_URL, data=body), timeout=30) as r:
+                    result.update(json.load(r))
+            except urllib.error.URLError as err:
+                result.update(status="network", reason=str(getattr(err, "reason", err)))
             ok = result.get("status") == 0
             self.send_response(200); self.end_headers()
             self.wfile.write(b"Done. You can close this tab and go back to the terminal." if ok
@@ -60,6 +64,13 @@ def main():
     while not result:
         server.handle_request()
 
+    if result.get("status") == "network":
+        hint = ""
+        if "CERTIFICATE_VERIFY_FAILED" in result["reason"]:
+            v = f"{sys.version_info.major}.{sys.version_info.minor}"
+            hint = (f"\nThis Python has no certificates installed. Run this, then try again:\n"
+                    f"  open '/Applications/Python {v}/Install Certificates.command'")
+        sys.exit("Could not reach Withings: " + result["reason"] + hint)
     if result.get("status") != 0:
         sys.exit(f"Withings returned status {result.get('status')}. Check the client ID, secret and callback URL.")
     print("Success. Add these two repository secrets in GitHub, then close this window:\n")
