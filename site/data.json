@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:24+00:00",
+ "generated": "2026-11-10T21:28+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -17,7 +17,7 @@
    "delta": null
   },
   "distance": {
-   "value": 0,
+   "value": 5.0,
    "prev": 0,
    "pct": null
   },

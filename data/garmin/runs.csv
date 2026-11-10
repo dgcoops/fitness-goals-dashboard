@@ -1,2 +1,4 @@
 date,activity_id,name,type,start_time_local,distance_km,duration_s,moving_s,avg_hr,max_hr,elevation_gain_m,avg_pace_s_per_km
+2026-10-06,24620408708,Singapore Running,running,2026-10-06 07:01:22,5.01,1803,1802,152.0,183.0,,360
+2026-11-07,24994632276,Bedford Running,running,2026-11-07 09:01:40,5.02,1578,1576,163.0,176.0,26,314
 2026-11-10,25028581620,Bedford Running,running,2026-11-10 09:00:39,3.23,1262,1262,139.0,153.0,17,391
