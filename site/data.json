@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T22:10+00:00",
+ "generated": "2026-11-10T22:11+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -61,12 +61,12 @@
    "goal": "Body weight",
    "area": "Body",
    "unit": "kg",
-   "start": 108.0,
+   "start": 106.58,
    "current": 105.4,
    "target": 95.0,
-   "pct": 20,
+   "pct": 10,
    "pace": 1,
-   "basis": "Starting point",
+   "basis": "Withings on Mon 9 Nov",
    "deadline": "2027-10-17"
   },
   {
@@ -74,12 +74,12 @@
    "goal": "Body fat",
    "area": "Body",
    "unit": "%",
-   "start": 28.0,
+   "start": 27.88,
    "current": 26.6,
    "target": 10.0,
-   "pct": 8,
+   "pct": 7,
    "pace": 1,
-   "basis": "Starting point",
+   "basis": "Withings on Mon 9 Nov",
    "deadline": "2027-10-17"
   },
   {
