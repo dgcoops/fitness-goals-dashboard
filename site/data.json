@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T22:11+00:00",
+ "generated": "2026-11-10T22:21+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -67,7 +67,8 @@
    "pct": 10,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
-   "deadline": "2027-10-17"
+   "deadline": "2027-10-17",
+   "smart": "Under 95 kg on the 7-day Withings average by 17 Oct 2027"
   },
   {
    "id": "bodyfat",
@@ -80,7 +81,8 @@
    "pct": 7,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
-   "deadline": "2027-10-17"
+   "deadline": "2027-10-17",
+   "smart": "Under 10% body fat on the 7-day Withings average by 17 Oct 2027"
   },
   {
    "id": "bench",
@@ -93,7 +95,8 @@
    "pct": 0,
    "pace": 1,
    "basis": "Starting weight",
-   "deadline": "2027-10-17"
+   "deadline": "2027-10-17",
+   "smart": "Bench press 100 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
   {
    "id": "squat",
@@ -106,7 +109,8 @@
    "pct": 9,
    "pace": 1,
    "basis": "Best logged set of 5 in Hevy",
-   "deadline": "2027-10-17"
+   "deadline": "2027-10-17",
+   "smart": "Squat 142.5 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
   {
    "id": "deadlift",
@@ -119,7 +123,8 @@
    "pct": 0,
    "pace": 1,
    "basis": "Starting weight",
-   "deadline": "2027-10-17"
+   "deadline": "2027-10-17",
+   "smart": "Deadlift 190 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
   {
    "id": "parkrun",
@@ -132,7 +137,8 @@
    "pct": 37,
    "pace": 1,
    "basis": "Fastest Saturday 5k on Garmin",
-   "deadline": "2027-10-16"
+   "deadline": "2027-10-16",
+   "smart": "Run a sub-20:00 parkrun by 16 Oct 2027"
   },
   {
    "id": "half",
@@ -145,7 +151,8 @@
    "pct": 0,
    "pace": 1,
    "basis": "Starting time",
-   "deadline": "2027-10-10"
+   "deadline": "2027-10-10",
+   "smart": "Run the Royal Parks Half in under 1:45:00 on 10 Oct 2027"
   }
  ],
  "series": {

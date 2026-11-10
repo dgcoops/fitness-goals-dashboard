@@ -34,9 +34,13 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .lift .n { font-size: 18px; font-weight: 600; }
 .good { color: var(--good); } .warn { color: var(--warn); }
 .area { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 16px 0 8px; }
-.goal { margin-bottom: 14px; }
+.goal { margin-bottom: 20px; }
 .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-variant-numeric: tabular-nums; }
 .row .now { font: 400 19px Georgia, serif; white-space: nowrap; }
+.smart { font-size: 14.5px; font-weight: 600; margin-bottom: 4px; }
+.ends .lbl { display: block; font-size: 11.5px; color: var(--muted); }
+.ends .end { display: block; font: 400 22px/1.15 Georgia, serif; white-space: nowrap; }
+.ends > span:last-child { text-align: right; }
 .bar { position: relative; height: 10px; border-radius: 5px; background: var(--line); margin: 6px 0; }
 .fill { position: absolute; inset: 0 auto 0 0; border-radius: 5px; }
 .pace { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
@@ -58,13 +62,13 @@ footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
   <h1>Is Dan ticking over?</h1>
   <p class="lede" id="lede">Loading…</p>
 
-  <div class="tiles" id="tiles"></div>
-
-  <section>
+  <section style="margin-top:0">
     <h2>Goal progress</h2>
-    <p class="note">Each bar runs from the starting point to the target shown on the right. The dark tick is where a steady pace from start to deadline would be today.</p>
+    <p class="note">Each bar runs from the starting point on the left to the target on the right. The dark tick is where a steady pace from start to deadline would be today.</p>
     <div id="goals"></div>
   </section>
+
+  <div class="tiles" id="tiles" style="margin-top:16px"></div>
 
   <section>
     <h2>Body weight</h2>
@@ -130,8 +134,8 @@ function renderTiles(d) {
   };
   box.append(body(t.weight, ' kg', 'Body weight, weekly average'), body(t.bodyfat, '% bf', 'Body fat, weekly average'));
 
-  if (!t.distance) box.append(tile('Distance last week', '—', 'Waiting for the Garmin connection'));
-  else box.append(tile('Distance last week', f1(t.distance.value) + ' km',
+  if (!t.distance) box.append(tile('Distance Ran Last Week', '—', 'Waiting for the Garmin connection'));
+  else box.append(tile('Distance Ran Last Week', f1(t.distance.value) + ' km',
     ['Week before ' + f1(t.distance.prev) + ' km' + (t.distance.pct === null ? '' : ' · '),
      t.distance.pct === null ? '' : change((t.distance.pct > 0 ? '+' : '') + t.distance.pct + '%', t.distance.pct > 10 ? 'warn' : t.distance.pct > 0 ? 'good' : '')]));
 
@@ -165,17 +169,19 @@ function renderGoals(d) {
   for (const g of d.goals) {
     if (g.area !== area) { area = g.area; box.append(el('div', 'area', area)); }
     const w = el('div', 'goal');
-    const top = el('div', 'row');
-    top.append(el('span', '', g.goal), el('span', 'now', show(g.target, g.unit)));
+    const smart = el('div', 'smart', g.smart || g.goal);
+    const top = el('div', 'row ends');
+    const end = (label, value) => { const e = el('span'); e.append(el('span', 'lbl', label), el('span', 'end', value)); return e; };
+    top.append(end('Start', g.start === null ? '—' : show(g.start, g.unit)), end('Goal', show(g.target, g.unit)));
     const bar = el('div', 'bar'), fill = el('div', 'fill'), pace = el('div', 'pace');
     fill.style.width = (g.pct || 0) + '%';
     fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
     pace.style.left = 'calc(' + g.pace + '% - 1px)';
     bar.append(fill, pace);
     const bot = el('div', 'row sub');
-    bot.append(el('span', '', (g.current === null ? g.basis : 'Now ' + show(g.current, g.unit) + ' · started at ' + show(g.start, g.unit))),
+    bot.append(el('span', '', g.current === null ? g.basis : 'Now ' + show(g.current, g.unit)),
                el('span', '', g.pct === null ? '—' : g.pct + '%'));
-    w.append(top, bar, bot);
+    w.append(smart, top, bar, bot);
     box.append(w);
   }
 }
