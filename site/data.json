@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:18+00:00",
+ "generated": "2026-11-10T21:21+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -122,12 +122,12 @@
    "goal": "parkrun 5k",
    "area": "Running",
    "unit": "time",
-   "start": 1710.0,
-   "current": 1710.0,
+   "start": 1800.0,
+   "current": 1800.0,
    "target": 1200.0,
    "pct": 0,
    "pace": 1,
-   "basis": "Estimate of 28-29 min",
+   "basis": "Starting time",
    "deadline": "2027-10-16"
   },
   {
@@ -135,12 +135,12 @@
    "goal": "Royal Parks Half",
    "area": "Running",
    "unit": "time",
-   "start": null,
-   "current": null,
+   "start": 8100.0,
+   "current": 8100.0,
    "target": 6300.0,
-   "pct": null,
+   "pct": 0,
    "pace": 1,
-   "basis": "No baseline yet",
+   "basis": "Starting time",
    "deadline": "2027-10-10"
   }
  ],
