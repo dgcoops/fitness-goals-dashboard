@@ -36,7 +36,7 @@ def post(url, fields, token=None):
         sys.exit(f"Could not reach Withings: {getattr(err, 'reason', err)}")
     if body.get("status") != 0:
         # Withings reports errors inside a 200 response. Never print the request.
-        sys.exit(f"Withings returned status {body.get('status')} for {fields.get('action')}")
+        sys.exit(f"Withings returned status {body.get('status')} for {fields.get('action')}: {body.get('error', 'no detail')}")
     return body["body"]
 
 
