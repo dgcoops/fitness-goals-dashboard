@@ -1,6 +1,6 @@
 id,goal,area,unit,start,current,target,start_date,deadline,basis
-weight,Body weight,Body,kg,104.5,104.5,95,2026-11-08,2027-10-17,Withings weigh-in
-bodyfat,Body fat,Body,%,24.7,24.7,10,2026-11-08,2027-10-17,Withings weigh-in
+weight,Body weight,Body,kg,108,108,95,2026-11-08,2027-10-17,Starting point
+bodyfat,Body fat,Body,%,28,28,10,2026-11-08,2027-10-17,Starting point
 bench,Bench press 1x5,Strength,kg,20,20,100,2026-11-08,2027-10-17,Starting weight
 squat,Squat 1x5,Strength,kg,30,30,142.5,2026-11-08,2027-10-17,Starting weight
 deadlift,Deadlift 1x5,Strength,kg,40,40,190,2026-11-08,2027-10-17,Starting weight
