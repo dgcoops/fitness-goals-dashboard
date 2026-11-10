@@ -11,7 +11,7 @@ A private dashboard tracking progress towards the 17 October 2027 goals.
 
 ## Layout
 
-- `data/manual/` - goals, weigh-ins and check-ins kept by hand until their sources are connected
+- `data/manual/` - goals and check-ins kept by hand
 - `data/hevy/`, `data/garmin/`, `data/withings/` - written by the sync, do not edit
 - `data/withings/token.enc` - the current Withings refresh token, encrypted with `WITHINGS_TOKEN_KEY`. Delete it if you re-run the Withings setup.
 - `site/` - the dashboard page (`index.html`) and its data (`data.json`)
