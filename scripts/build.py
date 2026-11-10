@@ -136,6 +136,15 @@ def main():
         cur, prev = round(run_km.get(last_mon, 0), 1), round(run_km.get(prev_mon, 0), 1)
         distance = {"value": cur, "prev": prev, "pct": round((cur - prev) / prev * 100) if prev else None}
 
+    # ---- parkrun: fastest Saturday run of about 5 km since the week the goals began ----
+    PARKRUN_FROM = date(2026, 11, 7)
+    parkruns = []
+    for r in runs:
+        d, km, secs = date.fromisoformat(r["date"][:10]), num(r.get("distance_km")), num(r.get("duration_s"))
+        if d >= PARKRUN_FROM and d.weekday() == 5 and km and 4.8 <= km <= 5.3 and secs:
+            parkruns.append({"date": d.isoformat(), "seconds": secs})
+    best_parkrun = min(parkruns, key=lambda p: p["seconds"]) if parkruns else None
+
     # ---- goals ----
     goals = []
     for g in goal_rows:
@@ -145,6 +154,9 @@ def main():
             current = series_weight[-1]["avg_kg"]
         elif g["id"] == "bodyfat" and series_weight and series_weight[-1]["avg_fat"] is not None:
             current = series_weight[-1]["avg_fat"]
+        elif g["id"] == "parkrun" and best_parkrun:
+            current = best_parkrun["seconds"]
+            basis = "Fastest Saturday 5k on Garmin"
         elif g["id"] in LIFTS and best[g["id"]]:
             current = max(best[g["id"]].values())
             basis = "Best logged set of 5 in Hevy"
@@ -175,6 +187,7 @@ def main():
             "weight": series_weight,
             "lifts": {k: [{"date": d.isoformat(), "kg": best[k].get(d) or None, "e1rm": e1rm[k][d]}
                           for d in sorted(e1rm[k])] for k in LIFTS},
+            "parkruns": parkruns,
             "gym_weeks": [{"week": w.isoformat(), "visits": visits.get(w, 0)} for w in weeks],
         },
         "checkins": rows(DATA / "manual" / "checkins.csv"),

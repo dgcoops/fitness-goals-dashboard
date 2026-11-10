@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T21:28+00:00",
+ "generated": "2026-11-10T21:30+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -127,11 +127,11 @@
    "area": "Running",
    "unit": "time",
    "start": 1800.0,
-   "current": 1800.0,
+   "current": 1578.0,
    "target": 1200.0,
-   "pct": 0,
+   "pct": 37,
    "pace": 1,
-   "basis": "Starting time",
+   "basis": "Fastest Saturday 5k on Garmin",
    "deadline": "2027-10-16"
   },
   {
@@ -169,6 +169,12 @@
    "bench": [],
    "deadlift": []
   },
+  "parkruns": [
+   {
+    "date": "2026-11-07",
+    "seconds": 1578.0
+   }
+  ],
   "gym_weeks": [
    {
     "week": "2026-11-02",
