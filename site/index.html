@@ -6,69 +6,100 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Is Dan ticking over?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700;1,800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f6f5f1; --panel: #ffffff; --ink: #14140f; --muted: #6b6a63; --line: #e2e0d8;
-  --body: #2a78d6; --strength: #eb6834; --running: #1baf7a; --good: #0b7a35; --warn: #a15c00; --ref: #b4b2a9;
+  --bg: #e9edf3; --panel: #ffffff; --ink: #0f2347; --muted: #5a6680; --line: #d5dce8;
+  --board: #0f2347; --board-ink: #ffffff; --board-muted: #9fb0cf; --timing: #ffd23f;
+  --track: #1c4db0; --track-run: #3f74dc; --lane-line: rgba(255,255,255,.55);
+  --body: #1c4db0; --strength: #e5432b; --running: #17935a;
+  --good: #12804c; --warn: #b8560a; --ref: #9aa6bd;
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #121211; --panel: #1c1c1a; --ink: #f0efec; --muted: #a3a199; --line: #2e2e2b;
-    --body: #3987e5; --strength: #e0703f; --running: #22b07f; --good: #4cc77a; --warn: #e0a040; --ref: #5f5e5a; }
+  :root { --bg: #0a1530; --panel: #12204a; --ink: #eef2fa; --muted: #9fb0cf; --line: #24356a;
+    --board: #061029; --track: #1f4fb8; --track-run: #4d83ec; --body: #6e9cf5; --strength: #ff6b55; --running: #3cc684;
+    --good: #4fd18d; --warn: #ffb35c; --ref: #4a5a85; }
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-main { max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; }
-h1 { font: 400 28px/1.2 Georgia, "Times New Roman", serif; margin: 8px 0 6px; }
-h2 { font-size: 17px; font-weight: 600; margin: 0 0 4px; }
-.lede { margin: 0 0 20px; color: var(--muted); }
-.lede b { color: var(--ink); }
-.note { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
-section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-top: 16px; }
-.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
-.tile .k { font-size: 13px; color: var(--muted); }
-.tile .v { font: 400 26px/1.2 Georgia, serif; font-variant-numeric: tabular-nums; margin: 2px 0; }
-.tile .s, .lift .s { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.wide { grid-column: 1 / -1; }
-.lift { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
-.lift .n { font-size: 18px; font-weight: 600; }
-.good { color: var(--good); } .warn { color: var(--warn); }
-.area { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 16px 0 8px; }
-.goal { margin-bottom: 20px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Barlow, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
+:focus-visible { outline: 3px solid var(--timing); outline-offset: 2px; }
+
+.board { background: var(--board); color: var(--board-ink); border-radius: 6px; padding: 18px 18px 16px; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: end; }
+h1 { font: italic 800 clamp(34px, 9vw, 52px)/0.92 var(--cond); margin: 0; letter-spacing: -0.01em; }
+.count { text-align: right; }
+.count .num { display: block; font: italic 800 clamp(40px, 11vw, 64px)/0.9 var(--cond); color: var(--timing); font-variant-numeric: tabular-nums; }
+.count .unit { font: 600 15px/1.2 var(--cond); color: var(--board-muted); }
+.lede { grid-column: 1 / -1; margin: 10px 0 0; color: var(--board-muted); font-size: 14.5px; max-width: 60ch; }
+.lede b { color: var(--board-ink); font-weight: 600; }
+
+h2 { font: 700 22px/1.1 var(--cond); margin: 0 0 4px; }
+.note { font-size: 13.5px; color: var(--muted); margin: 0 0 14px; max-width: 62ch; }
+section { background: var(--panel); border-radius: 6px; padding: 16px; margin-top: 14px; }
+
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.tile { background: var(--panel); border-radius: 6px; padding: 12px 14px; border-top: 4px solid var(--track); }
+.tile .k { font: 600 15px/1.2 var(--cond); color: var(--muted); }
+.tile .v { font: italic 800 34px/1.05 var(--cond); font-variant-numeric: tabular-nums; margin: 4px 0 2px; }
+.tile .s, .lift .s { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.wide { grid-column: 1 / -1; border-top-color: var(--strength); }
+.lift { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.lift > span:first-child { font: 700 18px var(--cond); }
+.lift .n { font: italic 800 24px var(--cond); }
+.good { color: var(--good); font-weight: 600; } .warn { color: var(--warn); font-weight: 600; }
+
+.area { display: flex; align-items: center; gap: 8px; font: 700 18px/1 var(--cond); margin: 20px 0 10px; }
+.area::before { content: ""; width: 14px; height: 14px; border-radius: 2px; background: var(--area, var(--track)); }
+.area:first-child { margin-top: 4px; }
+.goal { margin-bottom: 18px; }
+.goal-name { font: 700 17px/1.2 var(--cond); margin-bottom: 2px; }
 .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-variant-numeric: tabular-nums; }
-.row .now { font: 400 19px Georgia, serif; white-space: nowrap; }
-.smart { font-size: 14.5px; font-weight: 600; margin-bottom: 4px; }
-.ends .lbl { display: block; font-size: 11.5px; color: var(--muted); }
-.ends .end { display: block; font: 400 22px/1.15 Georgia, serif; white-space: nowrap; }
+.ends .lbl { display: block; font-size: 12px; color: var(--muted); }
+.ends .end { display: block; font: italic 800 28px/1 var(--cond); white-space: nowrap; }
 .ends > span:last-child { text-align: right; }
-.bar { position: relative; height: 10px; border-radius: 5px; background: var(--line); margin: 6px 0; }
-.fill { position: absolute; inset: 0 auto 0 0; border-radius: 5px; }
-.pace { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
-.sub { font-size: 12.5px; color: var(--muted); }
+.lane { position: relative; height: 26px; background: var(--track); border-radius: 2px; margin: 8px 0 6px; overflow: hidden;
+  box-shadow: inset 0 2px 0 var(--lane-line), inset 0 -2px 0 var(--lane-line); }
+.lane::before, .lane::after { content: ""; position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; }
+.lane::before { left: 0; } .lane::after { right: 0; }
+.covered { position: absolute; inset: 0 auto 0 0; background: var(--track-run); }
+.runner { position: absolute; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: var(--timing); box-shadow: 0 0 0 3px var(--track); }
+.pace { position: absolute; top: 4px; bottom: 4px; width: 2px; background: rgba(255,255,255,.9); }
+.sub { font-size: 13px; color: var(--muted); }
+.sub b { color: var(--ink); font-weight: 600; }
+
 .chart { position: relative; margin-top: 8px; }
 .chart svg { display: block; width: 100%; height: auto; }
-.chart text { font-size: 11px; fill: var(--muted); }
-.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; font-size: 12.5px; white-space: nowrap; }
+.chart text { font: 500 12px Barlow, sans-serif; fill: var(--muted); }
+.tip { position: absolute; pointer-events: none; background: var(--board); color: var(--board-ink); border-radius: 4px; padding: 5px 8px; font-size: 13px; white-space: nowrap; }
 .empty { color: var(--muted); font-size: 14px; padding: 18px 0; }
 .scroll { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
-th, td { text-align: left; padding: 6px 12px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
-th { color: var(--muted); font-weight: 600; }
-footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 12px 7px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font: 700 15px var(--cond); color: var(--muted); }
+footer { margin-top: 18px; font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .covered, .runner { transition: width .9s cubic-bezier(.2,.7,.2,1), left .9s cubic-bezier(.2,.7,.2,1); }
+}
 </style>
 </head>
 <body>
 <main>
-  <h1>Is Dan ticking over?</h1>
-  <p class="lede" id="lede">Loading…</p>
+  <header class="board">
+    <h1>Is Dan ticking over?</h1>
+    <div class="count"><span class="num" id="days">—</span><span class="unit">days to 17 Oct 2027</span></div>
+    <p class="lede" id="lede">Loading…</p>
+  </header>
 
-  <section style="margin-top:0">
+  <div class="tiles" id="tiles"></div>
+
+  <section>
     <h2>Goal progress</h2>
-    <p class="note">Each bar runs from the starting point on the left to the target on the right. The dark tick is where a steady pace from start to deadline would be today.</p>
+    <p class="note">Each lane runs from the start on the left to the goal on the right. The yellow marker is where you are now; the white tick is where a steady pace to the deadline would put you today.</p>
     <div id="goals"></div>
   </section>
-
-  <div class="tiles" id="tiles" style="margin-top:16px"></div>
 
   <section>
     <h2>Body weight</h2>
@@ -167,22 +198,30 @@ function renderGoals(d) {
   const box = $('goals');
   let area = null;
   for (const g of d.goals) {
-    if (g.area !== area) { area = g.area; box.append(el('div', 'area', area)); }
+    if (g.area !== area) {
+      area = g.area;
+      const h = el('h3', 'area', area);
+      h.style.setProperty('--area', 'var(' + (AREA[g.area] || '--track') + ')');
+      box.append(h);
+    }
     const w = el('div', 'goal');
-    const smart = el('div', 'smart', g.smart || g.goal);
-    const top = el('div', 'row ends');
     const fmt = (v) => (g.area === 'Body' && g.unit === 'kg' ? +(+v).toFixed(1) + ' kg' : show(v, g.unit));
     const end = (label, value) => { const e = el('span'); e.append(el('span', 'lbl', label), el('span', 'end', value)); return e; };
+    const top = el('div', 'row ends');
     top.append(end('Start', g.start === null ? '—' : fmt(g.start)), end('Goal', fmt(g.target)));
-    const bar = el('div', 'bar'), fill = el('div', 'fill'), pace = el('div', 'pace');
-    fill.style.width = (g.pct || 0) + '%';
-    fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
+    const pct = Math.max(0, Math.min(100, g.pct || 0));
+    const lane = el('div', 'lane'), covered = el('div', 'covered'), pace = el('div', 'pace'), runner = el('div', 'runner');
+    lane.setAttribute('role', 'img');
+    lane.setAttribute('aria-label', g.goal + ': ' + (g.pct === null ? 'no progress yet' : pct + '% of the way from start to goal'));
+    covered.style.width = '0%'; runner.style.left = 'calc(8px)';
     pace.style.left = 'calc(' + g.pace + '% - 1px)';
-    bar.append(fill, pace);
+    lane.append(covered, pace, runner);
+    requestAnimationFrame(() => { covered.style.width = pct + '%'; runner.style.left = 'clamp(10px, ' + pct + '%, calc(100% - 10px))'; });
     const bot = el('div', 'row sub');
-    bot.append(el('span', '', g.current === null ? g.basis : 'Now ' + fmt(g.current)),
-               el('span', '', g.pct === null ? '—' : g.pct + '%'));
-    w.append(smart, top, bar, bot);
+    const now = el('span');
+    if (g.current === null) now.append(g.basis); else now.append('Now ', el('b', '', fmt(g.current)));
+    bot.append(now, el('span', '', g.pct === null ? '—' : pct + '% done'));
+    w.append(el('div', 'goal-name', g.goal), top, lane, bot);
     box.append(w);
   }
 }
@@ -197,7 +236,7 @@ function lineChart(host, series, opts) {
   const ys = all.map((p) => p.y).concat(opts.yInclude || []);
   let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
   if (x0 === x1) x1 = x0 + 864e5 * 7;
-  const pad = (y1 - y0 || 1) * 0.08; y0 -= pad; y1 += pad;
+  const pad = Math.max((y1 - y0) * 0.08, Math.abs(y1) * 0.06 || 1); y0 -= pad; y1 += pad;
   const X = (v) => m.l + (v - x0) / (x1 - x0) * (W - m.l - m.r), Y = (v) => H - m.b - (v - y0) / (y1 - y0) * (H - m.t - m.b);
   const NS = 'http://www.w3.org/2000/svg';
   const s = (tag, attrs, text) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (text !== undefined) n.textContent = text; return n; };
@@ -304,7 +343,8 @@ function render() {
   const moved = d.goals.filter((g) => g.pct > 0).length;
   const days = Math.max(0, Math.ceil((new Date(d.final_day + 'T00:00:00Z') - Date.now()) / 864e5));
   const lede = $('lede');
-  lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles compare the week of ' + day(d.week.start) + ' to ' + day(d.week.end) + ' with the week before.');
+  $('days').textContent = days;
+  lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals are off the start line. Weekly tiles compare ' + day(d.week.start) + ' to ' + day(d.week.end) + ' with the week before.');
   $('tiles').replaceChildren(); $('goals').replaceChildren();
   renderTiles(d); renderGoals(d); renderCharts(d); renderCheckins(d);
   $('foot').textContent = 'Data refreshed ' + new Date(d.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '.';
