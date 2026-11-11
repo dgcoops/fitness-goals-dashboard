@@ -166,3 +166,30 @@ date,workout_id,workout,start_time,end_time,duration_min,exercise,exercise_templ
 2026-11-09,6a1d16f9-d7b8-4aec-87c6-8761d307531e,Gym A,2026-11-09T06:14:44+00:00,2026-11-09T06:45:56+00:00,31.2,Plank,C6C9B8A0,abdominals,0,normal,,,,,42
 2026-11-09,6a1d16f9-d7b8-4aec-87c6-8761d307531e,Gym A,2026-11-09T06:14:44+00:00,2026-11-09T06:45:56+00:00,31.2,Plank,C6C9B8A0,abdominals,1,normal,,,,,36
 2026-11-09,6a1d16f9-d7b8-4aec-87c6-8761d307531e,Gym A,2026-11-09T06:14:44+00:00,2026-11-09T06:45:56+00:00,31.2,Plank,C6C9B8A0,abdominals,2,normal,,,,,38
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,0,warmup,20,10,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,1,warmup,40,8,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,2,normal,70,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,3,normal,70,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,4,normal,70,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,5,normal,70,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Deadlift (Barbell),C6272009,glutes,6,normal,70,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Overhead Press (Barbell),7B8D84E8,shoulders,0,warmup,20,8,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Overhead Press (Barbell),7B8D84E8,shoulders,1,normal,25,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Overhead Press (Barbell),7B8D84E8,shoulders,2,normal,25,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Overhead Press (Barbell),7B8D84E8,shoulders,3,normal,28,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Overhead Press (Barbell),7B8D84E8,shoulders,4,normal,25,6,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Overhead Press (Barbell),7B8D84E8,shoulders,5,normal,30,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Bent Over Row (Barbell),55E6546F,upper_back,0,normal,50,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Bent Over Row (Barbell),55E6546F,upper_back,1,normal,50,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Bent Over Row (Barbell),55E6546F,upper_back,2,normal,50,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Bent Over Row (Barbell),55E6546F,upper_back,3,normal,50,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Bent Over Row (Barbell),55E6546F,upper_back,4,normal,50,5,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Standing Calf Raise,06745E58,calves,0,normal,,12,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Standing Calf Raise,06745E58,calves,1,normal,,12,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Standing Calf Raise,06745E58,calves,2,normal,,12,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Back Extension (Hyperextension),4F5866F8,lower_back,0,normal,,10,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Back Extension (Hyperextension),4F5866F8,lower_back,1,normal,,10,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Back Extension (Hyperextension),4F5866F8,lower_back,2,normal,,10,,,
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Plank,C6C9B8A0,abdominals,0,normal,,,,,46
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Plank,C6C9B8A0,abdominals,1,normal,,,,,45
+2026-11-11,8cc37526-9828-46ce-a87a-adf7bb3601d7,Gym A (copy),2026-11-11T08:27:10+00:00,2026-11-11T09:15:44+00:00,48.6,Plank,C6C9B8A0,abdominals,2,normal,,,,,46

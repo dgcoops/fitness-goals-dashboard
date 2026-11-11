@@ -2196,5 +2196,341 @@
   "start_time": "2026-11-09T06:14:44+00:00",
   "title": "Gym A",
   "updated_at": "2026-11-09T12:01:59.286Z"
+ },
+ {
+  "created_at": "2026-11-11T09:15:59.045Z",
+  "description": "",
+  "end_time": "2026-11-11T09:15:44+00:00",
+  "exercises": [
+   {
+    "exercise_template_id": "C6272009",
+    "index": 0,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 10,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 20
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 8,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 40
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 70
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 3,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 70
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 4,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 70
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 5,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 70
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 6,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 70
+     }
+    ],
+    "superset_id": null,
+    "title": "Deadlift (Barbell)"
+   },
+   {
+    "exercise_template_id": "7B8D84E8",
+    "index": 1,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 8,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 20
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 25
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 25
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 3,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 28
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 4,
+      "reps": 6,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 25
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 5,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 30
+     }
+    ],
+    "superset_id": null,
+    "title": "Overhead Press (Barbell)"
+   },
+   {
+    "exercise_template_id": "55E6546F",
+    "index": 2,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 3,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 4,
+      "reps": 5,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     }
+    ],
+    "superset_id": null,
+    "title": "Bent Over Row (Barbell)"
+   },
+   {
+    "exercise_template_id": "06745E58",
+    "index": 3,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     }
+    ],
+    "superset_id": null,
+    "title": "Standing Calf Raise"
+   },
+   {
+    "exercise_template_id": "4F5866F8",
+    "index": 4,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     }
+    ],
+    "superset_id": null,
+    "title": "Back Extension (Hyperextension)"
+   },
+   {
+    "exercise_template_id": "C6C9B8A0",
+    "index": 5,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": 46,
+      "index": 0,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": 45,
+      "index": 1,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": 46,
+      "index": 2,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     }
+    ],
+    "superset_id": null,
+    "title": "Plank"
+   }
+  ],
+  "id": "8cc37526-9828-46ce-a87a-adf7bb3601d7",
+  "routine_id": "2c4f1706-7402-4aec-9df0-ed0c34a57c07",
+  "start_time": "2026-11-11T08:27:10+00:00",
+  "title": "Gym A (copy)",
+  "updated_at": "2026-11-11T09:15:59.045Z"
  }
 ]

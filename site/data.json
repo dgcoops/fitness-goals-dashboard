@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T22:27+00:00",
+ "generated": "2026-11-11T09:56+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -25,7 +25,7 @@
    "value": 0,
    "prev": 0,
    "planned": 3,
-   "total": 1,
+   "total": 2,
    "connected": true
   },
   "lifts": [
@@ -62,9 +62,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 105.4,
+   "current": 105.2,
    "target": 95.0,
-   "pct": 10,
+   "pct": 12,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
    "deadline": "2027-10-17",
@@ -76,9 +76,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.6,
+   "current": 26.8,
    "target": 10.0,
-   "pct": 7,
+   "pct": 6,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
    "deadline": "2027-10-17",
@@ -118,11 +118,11 @@
    "area": "Strength",
    "unit": "kg",
    "start": 40.0,
-   "current": 40.0,
+   "current": 70.0,
    "target": 190.0,
-   "pct": 0,
+   "pct": 20,
    "pace": 1,
-   "basis": "Starting weight",
+   "basis": "Best logged set of 5 in Hevy",
    "deadline": "2027-10-17",
    "smart": "Deadlift 190 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
@@ -183,6 +183,15 @@
     "avg_fat": 26.6,
     "fat_mass": 28.5,
     "lean": 76.56
+   },
+   {
+    "date": "2026-11-11",
+    "kg": 104.7,
+    "fat": 27.32,
+    "avg_kg": 105.2,
+    "avg_fat": 26.8,
+    "fat_mass": 28.61,
+    "lean": 76.09
    }
   ],
   "lifts": {
@@ -194,7 +203,13 @@
     }
    ],
    "bench": [],
-   "deadlift": []
+   "deadlift": [
+    {
+     "date": "2026-11-11",
+     "kg": 70.0,
+     "e1rm": 81.7
+    }
+   ]
   },
   "parkruns": [
    {
@@ -209,7 +224,7 @@
    },
    {
     "week": "2026-11-09",
-    "visits": 1
+    "visits": 2
    }
   ]
  },
