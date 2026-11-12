@@ -80,6 +80,14 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .ends > span:last-child { text-align: right; }
 .bar { position: relative; height: 10px; border-radius: 5px; background: var(--line); margin: 6px 0; }
 .fill { position: absolute; inset: 0 auto 0 0; border-radius: 5px; }
+.bar.scrubbable { cursor: crosshair; touch-action: pan-y; }
+.bar.scrubbable::after { content: ""; position: absolute; inset: -14px 0; }
+.scrub-line { position: absolute; top: -7px; bottom: -7px; width: 2px; margin-left: -1px; background: var(--body); pointer-events: none; }
+.scrub-tip { bottom: 20px; z-index: 2; font-weight: 600; font-variant-numeric: tabular-nums; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.nowrow { align-items: flex-end; margin-top: 8px; }
+.nowrow .lbl { display: block; font-size: 11.5px; color: var(--muted); }
+.nowrow .nowv { display: block; font: 700 30px/1 "Saira Condensed", "Arial Narrow", sans-serif; white-space: nowrap; }
+.nowrow > span:last-child { text-align: right; }
 .pace { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
 .sub { font-size: 12.5px; color: var(--muted); }
 .chart { position: relative; margin-top: 8px; }
@@ -105,7 +113,7 @@ footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
 
   <section>
     <h2>Goal progress</h2>
-    <p class="note">Each bar runs from the starting point on the left to the target on the right. The dark tick is where a steady pace from start to deadline would be today.</p>
+    <p class="note">Each bar runs from the starting point on the left to the target on the right. The dark tick is where a steady pace from start to deadline would be today. Slide along a bar to see the date and the value a steady pace reaches by then.</p>
     <div id="goals"></div>
   </section>
 
@@ -256,6 +264,33 @@ function renderTiles(d) {
   box.append(lifts);
 }
 
+// Slide a finger or mouse along a goal bar to see the date and the value a steady path reaches by then.
+function scrub(bar, g, fmt) {
+  const t0 = Date.parse(g.start_date + 'T00:00:00Z'), t1 = Date.parse(g.deadline + 'T00:00:00Z');
+  const line = el('div', 'scrub-line'), tip = el('div', 'tip scrub-tip');
+  line.hidden = tip.hidden = true;
+  bar.append(line, tip);
+  bar.classList.add('scrubbable');
+  let timer;
+  const show = (ev) => {
+    const r = bar.getBoundingClientRect();
+    const f = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width));
+    const when = new Date(t0 + f * (t1 - t0)).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    const v = g.start + f * (g.target - g.start);
+    tip.textContent = when + ' · ' + (g.unit === 'kg' ? f1(v) + ' kg' : fmt(v));
+    line.hidden = tip.hidden = false;
+    line.style.left = f * 100 + '%';
+    tip.style.left = Math.max(0, Math.min(r.width - tip.offsetWidth, f * r.width - tip.offsetWidth / 2)) + 'px';
+    clearTimeout(timer);
+  };
+  const hide = () => { line.hidden = tip.hidden = true; };
+  bar.addEventListener('pointerdown', (ev) => { try { bar.setPointerCapture(ev.pointerId); } catch (e) {} show(ev); });
+  bar.addEventListener('pointermove', (ev) => { if (ev.pointerType === 'mouse' || ev.buttons || ev.pressure > 0) show(ev); });
+  bar.addEventListener('pointerleave', (ev) => { if (ev.pointerType === 'mouse') hide(); });
+  bar.addEventListener('pointerup', (ev) => { if (ev.pointerType !== 'mouse') timer = setTimeout(hide, 2500); });
+  bar.addEventListener('pointercancel', hide);
+}
+
 function renderGoals(d) {
   const box = $('goals');
   let area = null;
@@ -272,9 +307,14 @@ function renderGoals(d) {
     fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
     pace.style.left = 'calc(' + g.pace + '% - 1px)';
     bar.append(fill, pace);
-    const bot = el('div', 'row sub');
-    bot.append(el('span', '', g.current === null ? g.basis : 'Now ' + fmt(g.current)),
-               el('span', '', g.pct === null ? '—' : g.pct + '%'));
+    const bot = el('div', 'row nowrow');
+    const now = el('span');
+    if (g.current === null) now.append(el('span', 'sub', g.basis));
+    else now.append(el('span', 'lbl', 'Now'), el('span', 'nowv', fmt(g.current)));
+    const share = el('span');
+    share.append(el('span', 'lbl', 'Progress'), el('span', 'nowv', g.pct === null ? '—' : g.pct + '%'));
+    bot.append(now, share);
+    if (g.start !== null) scrub(bar, g, fmt);
     w.append(name, top, bar, bot);
     box.append(w);
   }

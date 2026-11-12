@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T10:26+00:00",
+ "generated": "2026-11-12T10:54+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-09",
@@ -443,6 +443,7 @@
    "pct": 13,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-17",
    "smart": "Under 95 kg on the 7-day Withings average by 17 Oct 2027"
   },
@@ -457,6 +458,7 @@
    "pct": 6,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-17",
    "smart": "Under 10% body fat on the 7-day Withings average by 17 Oct 2027"
   },
@@ -465,12 +467,13 @@
    "goal": "Bench press 1x5",
    "area": "Strength",
    "unit": "kg",
-   "start": 20.0,
-   "current": 20.0,
+   "start": 30.0,
+   "current": 30.0,
    "target": 100.0,
    "pct": 0,
    "pace": 1,
    "basis": "Starting weight",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-17",
    "smart": "Bench press 100 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
@@ -479,12 +482,13 @@
    "goal": "Squat 1x5",
    "area": "Strength",
    "unit": "kg",
-   "start": 30.0,
+   "start": 40.0,
    "current": 40.0,
    "target": 142.5,
-   "pct": 9,
+   "pct": 0,
    "pace": 1,
    "basis": "Best logged set of 5 in Hevy",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-17",
    "smart": "Squat 142.5 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
@@ -493,18 +497,19 @@
    "goal": "Deadlift 1x5",
    "area": "Strength",
    "unit": "kg",
-   "start": 40.0,
+   "start": 70.0,
    "current": 70.0,
    "target": 190.0,
-   "pct": 20,
+   "pct": 0,
    "pace": 1,
    "basis": "Best logged set of 5 in Hevy",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-17",
    "smart": "Deadlift 190 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
   },
   {
    "id": "parkrun",
-   "goal": "parkrun 5k",
+   "goal": "5k",
    "area": "Running",
    "unit": "time",
    "start": 1800.0,
@@ -513,12 +518,13 @@
    "pct": 37,
    "pace": 1,
    "basis": "Fastest Saturday 5k on Garmin",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-16",
    "smart": "Run a sub-20:00 parkrun by 16 Oct 2027"
   },
   {
    "id": "half",
-   "goal": "Royal Parks Half",
+   "goal": "Half Marathon",
    "area": "Running",
    "unit": "time",
    "start": 8100.0,
@@ -527,6 +533,7 @@
    "pct": 0,
    "pace": 1,
    "basis": "Starting time",
+   "start_date": "2026-11-08",
    "deadline": "2027-10-10",
    "smart": "Run the Royal Parks Half in under 1:45:00 on 10 Oct 2027"
   }

@@ -1,8 +1,8 @@
 id,goal,area,unit,start,current,target,start_date,deadline,basis,smart
 weight,Body weight,Body,kg,106.58,106.58,95,2026-11-08,2027-10-17,Withings on Mon 9 Nov,Under 95 kg on the 7-day Withings average by 17 Oct 2027
 bodyfat,Body fat,Body,%,27.88,27.88,10,2026-11-08,2027-10-17,Withings on Mon 9 Nov,Under 10% body fat on the 7-day Withings average by 17 Oct 2027
-bench,Bench press 1x5,Strength,kg,20,20,100,2026-11-08,2027-10-17,Starting weight,"Bench press 100 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
-squat,Squat 1x5,Strength,kg,30,30,142.5,2026-11-08,2027-10-17,Starting weight,"Squat 142.5 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
-deadlift,Deadlift 1x5,Strength,kg,40,40,190,2026-11-08,2027-10-17,Starting weight,"Deadlift 190 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
-parkrun,parkrun 5k,Running,time,1800,1800,1200,2026-11-08,2027-10-16,Starting time,Run a sub-20:00 parkrun by 16 Oct 2027
-half,Royal Parks Half,Running,time,8100,8100,6300,2026-11-08,2027-10-10,Starting time,Run the Royal Parks Half in under 1:45:00 on 10 Oct 2027
+bench,Bench press 1x5,Strength,kg,30,30,100,2026-11-08,2027-10-17,Starting weight,"Bench press 100 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
+squat,Squat 1x5,Strength,kg,40,40,142.5,2026-11-08,2027-10-17,Starting weight,"Squat 142.5 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
+deadlift,Deadlift 1x5,Strength,kg,70,70,190,2026-11-08,2027-10-17,Starting weight,"Deadlift 190 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
+parkrun,5k,Running,time,1800,1800,1200,2026-11-08,2027-10-16,Starting time,Run a sub-20:00 parkrun by 16 Oct 2027
+half,Half Marathon,Running,time,8100,8100,6300,2026-11-08,2027-10-10,Starting time,Run the Royal Parks Half in under 1:45:00 on 10 Oct 2027

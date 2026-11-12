@@ -171,7 +171,7 @@ def main():
         pace = round(max(0, min(1, (today - d0).days / (d1 - d0).days)) * 100)
         goals.append({"id": g["id"], "goal": g["goal"], "area": g["area"], "unit": g["unit"], "start": start,
                       "current": current, "target": target, "pct": pct, "pace": pace, "basis": basis,
-                      "deadline": g["deadline"], "smart": g.get("smart", "")})
+                      "start_date": g["start_date"], "deadline": g["deadline"], "smart": g.get("smart", "")})
 
     weeks = sorted(set(visits) | {this_mon})
 
