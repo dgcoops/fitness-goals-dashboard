@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T11:55+00:00",
+ "generated": "2026-11-12T09:46+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-02",
@@ -62,9 +62,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 105.2,
+   "current": 105.1,
    "target": 95.0,
-   "pct": 12,
+   "pct": 13,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
    "deadline": "2027-10-17",
@@ -192,6 +192,15 @@
     "avg_fat": 26.8,
     "fat_mass": 28.61,
     "lean": 76.09
+   },
+   {
+    "date": "2026-11-12",
+    "kg": 104.8,
+    "fat": 26.99,
+    "avg_kg": 105.1,
+    "avg_fat": 26.8,
+    "fat_mass": 28.28,
+    "lean": 76.52
    }
   ],
   "lifts": {
