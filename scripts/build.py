@@ -175,6 +175,40 @@ def main():
 
     weeks = sorted(set(visits) | {this_mon})
 
+    # ---- rolling calendar: every activity in the last six weeks, by day ----
+    CAL_WEEKS = 6
+    cal_start = this_mon - timedelta(days=7 * (CAL_WEEKS - 1))
+    by_day = defaultdict(list)
+    kinds = (("swim", "Swim"), ("run", "Run"), ("cycl", "Ride"), ("bik", "Ride"))
+    seen = set()
+    garmin_file = DATA / "garmin" / "activities.json"
+    for a in sorted(json.loads(garmin_file.read_text()) if garmin_file.exists() else [],
+                    key=lambda a: str(a.get("startTimeLocal", ""))):
+        key = (a.get("activityType") or {}).get("typeKey", "")
+        label = next((name for word, name in kinds if word in key), None)
+        when = str(a.get("startTimeLocal", ""))
+        if not label or when[:16] in seen:      # the same session saved by two devices
+            continue
+        seen.add(when[:16])
+        secs = a.get("movingDuration") or a.get("duration")
+        by_day[when[:10]].append({"kind": label.lower(), "title": label, "name": a.get("activityName") or label,
+                                  "minutes": round(secs / 60) if secs else None,
+                                  "km": round(a["distance"] / 1000, 1) if a.get("distance") else None})
+    gym = {}
+    for srow in all_sets:
+        w = gym.setdefault(srow.get("workout_id"), {"kind": "gym", "title": srow.get("workout") or "Gym",
+                                                    "date": srow.get("date"), "minutes": num(srow.get("duration_min")),
+                                                    "sets": 0, "kg": 0.0})
+        if srow.get("set_type") != "warmup":
+            w["sets"] += 1
+            w["kg"] += (num(srow.get("weight_kg")) or 0) * (num(srow.get("reps")) or 0)
+    for w in gym.values():
+        w["kg"], w["minutes"] = round(w["kg"]), round(w["minutes"]) if w["minutes"] else None
+        by_day[w.pop("date")].append(w)
+    calendar = [{"date": (cal_start + timedelta(days=i)).isoformat(),
+                 "items": by_day.get((cal_start + timedelta(days=i)).isoformat(), [])}
+                for i in range(7 * CAL_WEEKS)]
+
     # ---- planned sessions against done, day by day, for this week and last ----
     plan = rows(DATA / "manual" / "plan.csv")
     gym_days = set(workout_days.values())
@@ -193,6 +227,7 @@ def main():
         "final_day": max(g["deadline"] for g in goals) if goals else None,
         "week": {"start": this_mon.isoformat(), "end": (this_mon + timedelta(days=6)).isoformat()},
         "plan_weeks": plan_weeks,
+        "calendar": calendar,
         "tiles": {
             "weight": body_tile("kg"),
             "bodyfat": body_tile("fat"),

@@ -36,6 +36,25 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .lift { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .lift .n { font: 600 22px "Saira Condensed", "Arial Narrow", sans-serif; }
 .good { color: var(--good); } .warn { color: var(--warn); }
+.cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; margin: 0 -6px; }
+.cal-h { text-align: center; font-size: 12.5px; font-weight: 600; color: var(--muted); padding-bottom: 2px; }
+.cal-day { min-height: 76px; border: 1px solid var(--line); border-radius: 7px; padding: 1px; background: none; color: inherit; font: inherit; text-align: left; display: flex; flex-direction: column; gap: 3px; cursor: pointer; min-width: 0; }
+.cal-day.empty { cursor: default; }
+.cal-day.future { opacity: .45; }
+.cal-day.today { border: 2px solid var(--ink); }
+.cal-day.sel { background: var(--bg); }
+.cal-day:focus-visible { outline: 2px solid var(--body); outline-offset: 1px; }
+.cal-n { font-size: 11.5px; color: var(--muted); line-height: 1.2; padding-left: 2px; }
+.cal-n b { color: var(--ink); }
+.cal-a { border-radius: 5px; padding: 3px 2px 4px; color: #fff; font-size: 10.5px; letter-spacing: -0.02em; line-height: 1.25; font-variant-numeric: tabular-nums; overflow: hidden; }
+.cal-a span { display: block; white-space: nowrap; overflow: hidden; }
+.cal-a .t { font-weight: 700; text-overflow: ellipsis; }
+.cal-a.run { background: #12855a; } .cal-a.gym { background: #c9501f; } .cal-a.ride { background: #1f63bd; } .cal-a.swim { background: #0f7f96; }
+.cal-detail { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; }
+.cal-detail h3 { margin: 0 0 6px; font-size: 15px; }
+.cal-detail p { margin: 0 0 4px; }
+.cal-detail .dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+@media (min-width: 620px) { .cal { gap: 6px; margin: 0; } .cal-day { min-height: 92px; padding: 5px; } .cal-a { font-size: 12.5px; padding: 4px 6px 5px; letter-spacing: 0; } }
 .wk-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .wk-head h2 { margin: 0; }
 .wk-status { font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; color: #fff; }
@@ -112,6 +131,13 @@ footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
     <h2>Gym visits per week</h2>
     <p class="note">Against a plan of three sessions a week.</p>
     <div class="chart" id="chart-gym"></div>
+  </section>
+
+  <section>
+    <h2>Training calendar</h2>
+    <p class="note">The last six weeks, newest at the bottom. Gym sets and weight lifted leave out warm-ups. Tap a day for the full detail.</p>
+    <div id="calendar"></div>
+    <div id="cal-detail" class="cal-detail" hidden></div>
   </section>
 
   <section>
@@ -351,6 +377,61 @@ function renderCharts(d) {
   barChart($('chart-gym'), d.tiles.gym.connected ? d.series.gym_weeks : [], d.tiles.gym.planned, 'Gym visits appear after the first Hevy sync.');
 }
 
+const mins = (m) => m === null || m === undefined ? null : m >= 60 ? Math.floor(m / 60) + 'h ' + String(m % 60).padStart(2, '0') : m + ' min';
+const tonnes = (k) => k >= 1000 ? (k / 1000).toFixed(1) + ' t' : k + ' kg';
+function calLines(a, tight) {
+  const m = a.minutes === null || a.minutes === undefined ? null
+    : !tight ? mins(a.minutes) : a.minutes >= 60 ? Math.floor(a.minutes / 60) + 'h' + String(a.minutes % 60).padStart(2, '0') : a.minutes + 'm';
+  const sp = tight ? '' : ' ';
+  return a.kind === 'gym'
+    ? [m, a.sets + sp + 'sets', a.kg ? tonnes(a.kg).replace(' ', sp) : null]
+    : [m, a.km === null ? null : (tight && a.km >= 10 ? Math.round(a.km) : a.km.toFixed(1)) + sp + 'km'];
+}
+function renderCalendar(d) {
+  const host = $('calendar'), detail = $('cal-detail'), today = londonToday();
+  const days = d.calendar || [];
+  if (!days.length) { host.replaceChildren(el('div', 'empty', 'No activities yet.')); return; }
+  const tight = host.clientWidth < 520;
+  const grid = el('div', 'cal');
+  for (const h of ['M', 'T', 'W', 'T', 'F', 'S', 'S']) grid.append(el('div', 'cal-h', h));
+  const longDay = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+  for (const x of days) {
+    const has = x.items.length > 0;
+    const c = el(has ? 'button' : 'div', 'cal-day' + (has ? '' : ' empty') + (x.date > today ? ' future' : '') + (x.date === today ? ' today' : ''));
+    const n = el('span', 'cal-n'), num = +x.date.slice(8);
+    if (num === 1 || x === days[0]) n.append(el('b', '', day(x.date))); else n.textContent = num;
+    c.append(n);
+    for (const a of x.items) {
+      const b = el('span', 'cal-a ' + a.kind);
+      b.append(el('span', 't', a.title));
+      for (const line of calLines(a, tight)) if (line) b.append(el('span', '', line));
+      c.append(b);
+    }
+    if (has) {
+      c.type = 'button';
+      c.setAttribute('aria-label', longDay(x.date) + ': ' + x.items.map((a) => [a.title].concat(calLines(a).filter(Boolean)).join(', ')).join('; '));
+      c.addEventListener('click', () => {
+        const open = c.classList.contains('sel');
+        grid.querySelectorAll('.sel').forEach((e) => e.classList.remove('sel'));
+        if (open) { detail.hidden = true; return; }
+        c.classList.add('sel');
+        const out = [el('h3', '', longDay(x.date))];
+        for (const a of x.items) {
+          const p = el('p'), dot = el('span', 'dot cal-a ' + a.kind);
+          const facts = a.kind === 'gym'
+            ? [mins(a.minutes), a.sets + ' working sets', a.kg ? a.kg.toLocaleString('en-GB') + ' kg lifted' : null]
+            : [mins(a.minutes), a.km === null ? null : a.km.toFixed(1) + ' km', a.name !== a.title ? a.name : null];
+          p.append(dot, el('b', '', a.title), ' — ' + facts.filter(Boolean).join(', '));
+          out.push(p);
+        }
+        detail.replaceChildren(...out); detail.hidden = false;
+      });
+    }
+    grid.append(c);
+  }
+  host.replaceChildren(grid);
+}
+
 function renderCheckins(d) {
   const rows = (d.checkins || []).slice().sort((a, b) => b.date.localeCompare(a.date)).slice(0, 14);
   if (!rows.length) { $('checkins').replaceChildren(el('div', 'empty', 'No check-ins yet.')); return; }
@@ -373,12 +454,12 @@ function render() {
   const lede = $('lede');
   lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles show this week so far, from ' + day(d.week.start) + ', against last week.');
   $('tiles').replaceChildren(); $('goals').replaceChildren();
-  renderWeek(d); renderTiles(d); renderGoals(d); renderCharts(d); renderCheckins(d);
+  renderWeek(d); renderTiles(d); renderGoals(d); renderCharts(d); renderCalendar(d); renderCheckins(d);
   $('foot').textContent = 'Data refreshed ' + new Date(d.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '.';
 }
 fetch('data.json', { cache: 'no-store' }).then((r) => r.json()).then((d) => { DATA = d; render(); })
   .catch(() => { $('lede').textContent = 'The dashboard data could not be loaded.'; });
-let timer; addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(() => DATA && renderCharts(DATA), 150); });
+let timer; addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(() => { if (DATA) { renderCharts(DATA); renderCalendar(DATA); } }, 150); });
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T10:21+00:00",
+ "generated": "2026-11-12T10:26+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-09",
@@ -129,6 +129,256 @@
      "run_done": false
     }
    ]
+  }
+ ],
+ "calendar": [
+  {
+   "date": "2026-10-05",
+   "items": []
+  },
+  {
+   "date": "2026-10-06",
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Singapore Running",
+     "minutes": 30,
+     "km": 5.0
+    }
+   ]
+  },
+  {
+   "date": "2026-10-07",
+   "items": []
+  },
+  {
+   "date": "2026-10-08",
+   "items": []
+  },
+  {
+   "date": "2026-10-09",
+   "items": []
+  },
+  {
+   "date": "2026-10-10",
+   "items": []
+  },
+  {
+   "date": "2026-10-11",
+   "items": [
+    {
+     "kind": "ride",
+     "title": "Ride",
+     "name": "Singapore Road Cycling",
+     "minutes": 153,
+     "km": 66.0
+    }
+   ]
+  },
+  {
+   "date": "2026-10-12",
+   "items": []
+  },
+  {
+   "date": "2026-10-13",
+   "items": []
+  },
+  {
+   "date": "2026-10-14",
+   "items": []
+  },
+  {
+   "date": "2026-10-15",
+   "items": []
+  },
+  {
+   "date": "2026-10-16",
+   "items": []
+  },
+  {
+   "date": "2026-10-17",
+   "items": []
+  },
+  {
+   "date": "2026-10-18",
+   "items": [
+    {
+     "kind": "ride",
+     "title": "Ride",
+     "name": "Singapore Cycling",
+     "minutes": 148,
+     "km": 66.7
+    }
+   ]
+  },
+  {
+   "date": "2026-10-19",
+   "items": []
+  },
+  {
+   "date": "2026-10-20",
+   "items": []
+  },
+  {
+   "date": "2026-10-21",
+   "items": []
+  },
+  {
+   "date": "2026-10-22",
+   "items": []
+  },
+  {
+   "date": "2026-10-23",
+   "items": []
+  },
+  {
+   "date": "2026-10-24",
+   "items": [
+    {
+     "kind": "ride",
+     "title": "Ride",
+     "name": "Singapore Cycling",
+     "minutes": 129,
+     "km": 66.7
+    }
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "items": []
+  },
+  {
+   "date": "2026-10-26",
+   "items": []
+  },
+  {
+   "date": "2026-10-27",
+   "items": [
+    {
+     "kind": "ride",
+     "title": "Ride",
+     "name": "Singapore Road Cycling",
+     "minutes": 115,
+     "km": 60.2
+    }
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "items": []
+  },
+  {
+   "date": "2026-10-29",
+   "items": []
+  },
+  {
+   "date": "2026-10-30",
+   "items": []
+  },
+  {
+   "date": "2026-10-31",
+   "items": []
+  },
+  {
+   "date": "2026-11-01",
+   "items": []
+  },
+  {
+   "date": "2026-11-02",
+   "items": []
+  },
+  {
+   "date": "2026-11-03",
+   "items": []
+  },
+  {
+   "date": "2026-11-04",
+   "items": []
+  },
+  {
+   "date": "2026-11-05",
+   "items": []
+  },
+  {
+   "date": "2026-11-06",
+   "items": []
+  },
+  {
+   "date": "2026-11-07",
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 26,
+     "km": 5.0
+    }
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "items": []
+  },
+  {
+   "date": "2026-11-09",
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Gym A",
+     "minutes": 31,
+     "sets": 19,
+     "kg": 3160
+    }
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 21,
+     "km": 3.2
+    }
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Gym A (copy)",
+     "minutes": 49,
+     "sets": 24,
+     "kg": 3690
+    }
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 25,
+     "km": 3.9
+    }
+   ]
+  },
+  {
+   "date": "2026-11-13",
+   "items": []
+  },
+  {
+   "date": "2026-11-14",
+   "items": []
+  },
+  {
+   "date": "2026-11-15",
+   "items": []
   }
  ],
  "tiles": {
