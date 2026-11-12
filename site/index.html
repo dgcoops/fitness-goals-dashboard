@@ -84,10 +84,11 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .bar.scrubbable::after { content: ""; position: absolute; inset: -14px 0; }
 .scrub-line { position: absolute; top: -7px; bottom: -7px; width: 2px; margin-left: -1px; background: var(--body); pointer-events: none; }
 .scrub-tip { bottom: 20px; z-index: 2; font-weight: 600; font-variant-numeric: tabular-nums; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
-.nowrow { align-items: flex-end; margin-top: 8px; }
-.nowrow .lbl { display: block; font-size: 11.5px; color: var(--muted); }
-.nowrow .nowv { display: block; font: 700 30px/1 "Saira Condensed", "Arial Narrow", sans-serif; white-space: nowrap; }
-.nowrow > span:last-child { text-align: right; }
+.nowrow { position: relative; height: 50px; margin-top: 10px; }
+.nowat { position: absolute; top: 0; white-space: nowrap; }
+.nowrow .lbl { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.nowrow .nowv { display: block; font: 700 30px/1 "Saira Condensed", "Arial Narrow", sans-serif; }
+.bar.has-now::before { content: ""; position: absolute; left: var(--at); top: 100%; width: 2px; height: 8px; margin-left: -1px; background: var(--muted); }
 .pace { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
 .sub { font-size: 12.5px; color: var(--muted); }
 .chart { position: relative; margin-top: 8px; }
@@ -307,13 +308,19 @@ function renderGoals(d) {
     fill.style.background = 'var(' + (AREA[g.area] || '--body') + ')';
     pace.style.left = 'calc(' + g.pace + '% - 1px)';
     bar.append(fill, pace);
-    const bot = el('div', 'row nowrow');
-    const now = el('span');
+    const bot = el('div', 'nowrow');
+    const now = el('span', 'nowat');
     if (g.current === null) now.append(el('span', 'sub', g.basis));
-    else now.append(el('span', 'lbl', 'Now'), el('span', 'nowv', fmt(g.current)));
-    const share = el('span');
-    share.append(el('span', 'lbl', 'Progress'), el('span', 'nowv', g.pct === null ? '—' : g.pct + '%'));
-    bot.append(now, share);
+    else {
+      // Sits under the end of the coloured bar: left-aligned at 0%, right-aligned at 100%.
+      const at = Math.max(0, Math.min(100, g.pct || 0));
+      now.style.left = at + '%';
+      now.style.transform = 'translateX(-' + at + '%)';
+      bar.style.setProperty('--at', at + '%');
+      bar.classList.add('has-now');
+      now.append(el('span', 'nowv', fmt(g.current)), el('span', 'lbl', 'Now · ' + at + '% of the way'));
+    }
+    bot.append(now);
     if (g.start !== null) scrub(bar, g, fmt);
     w.append(name, top, bar, bot);
     box.append(w);
