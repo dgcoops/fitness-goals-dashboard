@@ -1,28 +1,154 @@
 {
- "generated": "2026-11-12T09:46+00:00",
+ "generated": "2026-11-12T10:21+00:00",
  "final_day": "2027-10-17",
  "week": {
-  "start": "2026-11-02",
-  "end": "2026-11-08"
+  "start": "2026-11-09",
+  "end": "2026-11-15"
  },
+ "plan_weeks": [
+  {
+   "start": "2026-11-09",
+   "counts": true,
+   "days": [
+    {
+     "date": "2026-11-09",
+     "day": "Mon",
+     "gym_planned": true,
+     "gym_done": true,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-10",
+     "day": "Tue",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": true
+    },
+    {
+     "date": "2026-11-11",
+     "day": "Wed",
+     "gym_planned": true,
+     "gym_done": true,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-12",
+     "day": "Thu",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": true
+    },
+    {
+     "date": "2026-11-13",
+     "day": "Fri",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-14",
+     "day": "Sat",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-15",
+     "day": "Sun",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    }
+   ]
+  },
+  {
+   "start": "2026-11-02",
+   "counts": true,
+   "days": [
+    {
+     "date": "2026-11-02",
+     "day": "Mon",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-03",
+     "day": "Tue",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-04",
+     "day": "Wed",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-05",
+     "day": "Thu",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-06",
+     "day": "Fri",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-07",
+     "day": "Sat",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": true
+    },
+    {
+     "date": "2026-11-08",
+     "day": "Sun",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    }
+   ]
+  }
+ ],
  "tiles": {
   "weight": {
-   "value": 104.5,
-   "prev": null,
-   "delta": null
+   "value": 105.3,
+   "prev": 104.5,
+   "delta": 0.8
   },
   "bodyfat": {
-   "value": 24.7,
-   "prev": null,
-   "delta": null
+   "value": 27.3,
+   "prev": 24.7,
+   "delta": 2.6
   },
   "distance": {
-   "value": 5.0,
-   "prev": 0,
-   "pct": null
+   "value": 7.2,
+   "prev": 5.0,
+   "pct": 44
   },
   "gym": {
-   "value": 0,
+   "value": 2,
    "prev": 0,
    "planned": 3,
    "total": 2,
@@ -32,7 +158,7 @@
    {
     "id": "squat",
     "name": "Squat",
-    "value": null,
+    "value": 40.0,
     "prev": null,
     "delta": null,
     "last_known": null
@@ -48,7 +174,7 @@
    {
     "id": "deadlift",
     "name": "Deadlift",
-    "value": null,
+    "value": 70.0,
     "prev": null,
     "delta": null,
     "last_known": null
@@ -227,10 +353,6 @@
    }
   ],
   "gym_weeks": [
-   {
-    "week": "2026-11-02",
-    "visits": 0
-   },
    {
     "week": "2026-11-09",
     "visits": 2

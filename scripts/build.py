@@ -84,8 +84,8 @@ def main():
                               "fat_mass": r["fat_mass"], "lean": r["lean"]})
 
     def body_tile(field):
-        cur = mean([w[field] for w in weigh if in_week(w["date"], last_mon)])
-        prev = mean([w[field] for w in weigh if in_week(w["date"], prev_mon)])
+        cur = mean([w[field] for w in weigh if in_week(w["date"], this_mon)])
+        prev = mean([w[field] for w in weigh if in_week(w["date"], last_mon)])
         delta = round(cur - prev, 1) if cur is not None and prev is not None else None
         return {"value": cur, "prev": prev, "delta": delta}
 
@@ -122,8 +122,8 @@ def main():
 
     lift_tiles = []
     for key, rule in LIFTS.items():
-        cur, prev = week_best(key, last_mon), week_best(key, prev_mon)
-        earlier = [kg for d, kg in best[key].items() if d < last_mon]
+        cur, prev = week_best(key, this_mon), week_best(key, last_mon)
+        earlier = [kg for d, kg in best[key].items() if d < this_mon]
         lift_tiles.append({"id": key, "name": rule["label"], "value": cur, "prev": prev,
                            "delta": round(cur - prev, 2) if cur is not None and prev is not None else None,
                            "last_known": max(earlier) if cur is None and earlier else None})
@@ -137,7 +137,7 @@ def main():
             run_km[monday(date.fromisoformat(r["date"][:10]))] += km
     distance = None
     if runs:
-        cur, prev = round(run_km.get(last_mon, 0), 1), round(run_km.get(prev_mon, 0), 1)
+        cur, prev = round(run_km.get(this_mon, 0), 1), round(run_km.get(last_mon, 0), 1)
         distance = {"value": cur, "prev": prev, "pct": round((cur - prev) / prev * 100) if prev else None}
 
     # ---- parkrun: fastest Saturday run of about 5 km since the week the goals began ----
@@ -173,16 +173,31 @@ def main():
                       "current": current, "target": target, "pct": pct, "pace": pace, "basis": basis,
                       "deadline": g["deadline"], "smart": g.get("smart", "")})
 
-    weeks = sorted(set(visits) | {last_mon})
+    weeks = sorted(set(visits) | {this_mon})
+
+    # ---- planned sessions against done, day by day, for this week and last ----
+    plan = rows(DATA / "manual" / "plan.csv")
+    gym_days = set(workout_days.values())
+    run_days = {date.fromisoformat(r["date"][:10]) for r in runs if num(r.get("distance_km"))}
+    plan_weeks = []
+    for start in (this_mon, last_mon):
+        days = []
+        for i, p in enumerate(plan[:7]):
+            d = start + timedelta(days=i)
+            days.append({"date": d.isoformat(), "day": p["day"],
+                         "gym_planned": p["gym"] == "1", "gym_done": d in gym_days,
+                         "run_planned": p["run"] == "1", "run_done": d in run_days})
+        plan_weeks.append({"start": start.isoformat(), "counts": start >= monday(began), "days": days})
     out = {
         "generated": datetime.now(ZoneInfo("Europe/London")).isoformat(timespec="minutes"),
         "final_day": max(g["deadline"] for g in goals) if goals else None,
-        "week": {"start": last_mon.isoformat(), "end": (last_mon + timedelta(days=6)).isoformat()},
+        "week": {"start": this_mon.isoformat(), "end": (this_mon + timedelta(days=6)).isoformat()},
+        "plan_weeks": plan_weeks,
         "tiles": {
             "weight": body_tile("kg"),
             "bodyfat": body_tile("fat"),
             "distance": distance,
-            "gym": {"value": visits.get(last_mon, 0), "prev": visits.get(prev_mon, 0),
+            "gym": {"value": visits.get(this_mon, 0), "prev": visits.get(last_mon, 0),
                     "planned": PLANNED_GYM_VISITS, "total": len(workout_days), "connected": bool(all_sets)},
             "lifts": lift_tiles,
         },

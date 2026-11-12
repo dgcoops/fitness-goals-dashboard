@@ -12,11 +12,11 @@
 <style>
 :root {
   --bg: #f6f5f1; --panel: #ffffff; --ink: #14140f; --muted: #6b6a63; --line: #e2e0d8;
-  --body: #2a78d6; --strength: #eb6834; --running: #1baf7a; --good: #0b7a35; --warn: #a15c00; --ref: #b4b2a9;
+  --body: #2a78d6; --strength: #eb6834; --running: #1baf7a; --good: #0b7a35; --done: #17964a; --missed: #d63a2f; --warn: #a15c00; --ref: #b4b2a9;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121211; --panel: #1c1c1a; --ink: #f0efec; --muted: #a3a199; --line: #2e2e2b;
-    --body: #3987e5; --strength: #e0703f; --running: #22b07f; --good: #4cc77a; --warn: #e0a040; --ref: #5f5e5a; }
+    --body: #3987e5; --strength: #e0703f; --running: #22b07f; --good: #4cc77a; --done: #1e9e52; --missed: #d9483d; --warn: #e0a040; --ref: #5f5e5a; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Archivo, -apple-system, "Segoe UI", sans-serif; }
@@ -36,6 +36,21 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .lift { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .lift .n { font: 600 22px "Saira Condensed", "Arial Narrow", sans-serif; }
 .good { color: var(--good); } .warn { color: var(--warn); }
+.wk-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.wk-head h2 { margin: 0; }
+.wk-status { font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; color: #fff; }
+.wk-status.good { background: var(--done); color: #fff; } .wk-status.bad { background: var(--missed); }
+.wk { display: grid; grid-template-columns: 34px repeat(7, minmax(0, 1fr)); gap: 6px; align-items: center; max-width: 460px; }
+.wk-d { text-align: center; font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.wk-d.today { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.wk-l { font-size: 13px; font-weight: 600; }
+.wk-c { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #fff; }
+.wk-c.done { background: var(--done); } .wk-c.missed { background: var(--missed); }
+.wk-c.ahead { border: 2px dashed var(--ref); } .wk-c.due { border: 2px solid var(--ink); }
+.wk-c.rest { background: var(--line); opacity: .45; }
+.wk-key { display: flex; gap: 14px; margin-top: 10px; }
+.wk-key > span { display: inline-flex; align-items: center; gap: 5px; }
+.wk-c.mini { width: 12px; border-radius: 3px; border-width: 1.5px; }
 .area { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 16px 0 8px; }
 .goal { margin-bottom: 20px; }
 .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-variant-numeric: tabular-nums; }
@@ -65,7 +80,9 @@ footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
   <h1>Is Dan ticking over?</h1>
   <p class="lede" id="lede">Loading…</p>
 
-  <div class="tiles" id="tiles"></div>
+  <section id="week" style="margin-top:0" hidden></section>
+
+  <div class="tiles" id="tiles" style="margin-top:16px"></div>
 
   <section>
     <h2>Goal progress</h2>
@@ -127,37 +144,84 @@ function tile(label, value, sub, wide) {
 }
 function change(text, cls) { return el('span', cls || '', text); }
 
+function londonToday() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date());
+}
+
+// Two rows of seven squares: planned sessions against what was done.
+function renderWeek(d) {
+  const box = $('week');
+  const wk = (d.plan_weeks || [])[0];
+  if (!wk) { box.hidden = true; return; }
+  const today = londonToday();
+  const rowsDef = [['Gym', 'gym'], ['Run', 'run']];
+  let done = 0, due = 0, missed = 0, left = 0;
+  const grid = el('div', 'wk');
+  grid.append(el('span'));
+  for (const x of wk.days) grid.append(el('span', 'wk-d' + (x.date === today ? ' today' : ''), x.day[0]));
+  for (const [label, key] of rowsDef) {
+    grid.append(el('span', 'wk-l', label));
+    for (const x of wk.days) {
+      const planned = x[key + '_planned'], did = x[key + '_done'];
+      let state = 'rest', text = '', say = 'rest day';
+      if (did) { state = 'done'; text = '✓'; say = planned ? 'done' : 'extra session done'; }
+      else if (planned && x.date < today) { state = 'missed'; text = '✕'; say = 'missed'; }
+      else if (planned && x.date === today) { state = 'due'; say = 'planned today'; }
+      else if (planned) { state = 'ahead'; say = 'planned'; }
+      if (planned) { due++; if (did) done++; else if (x.date < today) missed++; else left++; }
+      const c = el('span', 'wk-c ' + state, text);
+      c.setAttribute('role', 'img');
+      c.setAttribute('aria-label', label + ' ' + x.day + ': ' + say);
+      grid.append(c);
+    }
+  }
+  const head = el('div', 'wk-head');
+  const status = el('span', 'wk-status ' + (missed ? 'bad' : 'good'), missed ? missed + ' missed' : 'All green');
+  head.append(el('h2', '', 'This week'), status);
+  const sum = el('p', 'note', done + ' of ' + due + ' planned sessions done' + (left ? ', ' + left + ' still to come.' : '.'));
+  const key = el('div', 'wk-key sub');
+  for (const [cls, text] of [['done', 'Done'], ['missed', 'Missed'], ['ahead', 'Planned']]) {
+    const k = el('span'); k.append(el('span', 'wk-c ' + cls + ' mini'), text); key.append(k);
+  }
+  box.hidden = false;
+  box.replaceChildren(head, sum, grid, key);
+}
+
 function renderTiles(d) {
   const t = d.tiles, box = $('tiles');
   const body = (x, unit, label) => {
-    if (x.value === null) return tile(label, '—', 'No weigh-ins last week');
-    const sub = x.prev === null ? ['No week before to compare']
-      : ['Week before ' + f1(x.prev) + ' · ', change(signed(x.delta, unit), x.delta < 0 ? 'good' : x.delta > 0 ? 'warn' : '')];
-    return tile(label, f1(x.value) + (unit === ' kg' ? ' kg' : '%'), sub);
+    const u = unit === ' kg' ? ' kg' : '%';
+    if (x.value === null) return tile(label, '—', x.prev === null ? 'No weigh-ins yet this week' : 'No weigh-ins yet this week · last week ' + f1(x.prev) + u);
+    const sub = x.prev === null ? ['No last week to compare']
+      : ['Last week ' + f1(x.prev) + u + ' · ', change(signed(x.delta, unit), x.delta < 0 ? 'good' : x.delta > 0 ? 'warn' : '')];
+    return tile(label, f1(x.value) + u, sub);
   };
-  box.append(body(t.weight, ' kg', 'Body weight, weekly average'), body(t.bodyfat, '% bf', 'Body fat, weekly average'));
+  box.append(body(t.weight, ' kg', 'Body weight, this week so far'), body(t.bodyfat, '% bf', 'Body fat, this week so far'));
 
-  if (!t.distance) box.append(tile('Distance Ran Last Week', '—', 'Waiting for the Garmin connection'));
-  else box.append(tile('Distance Ran Last Week', f1(t.distance.value) + ' km',
-    ['Week before ' + f1(t.distance.prev) + ' km' + (t.distance.pct === null ? '' : ' · '),
-     t.distance.pct === null ? '' : change((t.distance.pct > 0 ? '+' : '') + t.distance.pct + '%', t.distance.pct > 10 ? 'warn' : t.distance.pct > 0 ? 'good' : '')]));
+  if (!t.distance) box.append(tile('Distance Ran This Week', '—', 'Waiting for the Garmin connection'));
+  else {
+    const gap = Math.round((t.distance.prev - t.distance.value) * 10) / 10;
+    box.append(tile('Distance Ran This Week', f1(t.distance.value) + ' km',
+      ['Last week ' + f1(t.distance.prev) + ' km · ', gap > 0 ? f1(gap) + ' km to match it' : change(t.distance.prev > 0 ? 'last week beaten' : 'on the board', 'good')]));
+  }
 
-  if (!t.gym.connected) box.append(tile('Gym visits last week', '—', 'Waiting for the first Hevy sync'));
-  else box.append(tile('Gym visits last week', t.gym.value + ' of ' + t.gym.planned,
-    'Week before ' + t.gym.prev + ' of ' + t.gym.planned + ' · ' + t.gym.total + ' total'));
+  if (!t.gym.connected) box.append(tile('Gym visits this week', '—', 'Waiting for the first Hevy sync'));
+  else box.append(tile('Gym visits this week', t.gym.value + ' of ' + t.gym.planned,
+    'Last week ' + t.gym.prev + ' of ' + t.gym.planned + ' · ' + t.gym.total + ' total'));
 
-  const lifts = tile('Best set of 5 last week', undefined, null, true);
+  const lifts = tile('Best set of 5 this week', undefined, null, true);
   for (const l of t.lifts) {
     const r = el('div', 'lift');
     r.append(el('span', '', l.name));
     const right = el('span');
     if (l.value === null) {
-      right.append(el('span', 's', l.last_known ? 'Not lifted last week · last ' + kg(l.last_known) : 'No set of 5 logged yet'));
+      right.append(el('span', 's', l.prev !== null ? 'Not yet this week · last week ' + kg(l.prev)
+        : l.last_known ? 'Not yet this week · best so far ' + kg(l.last_known) : 'No set of 5 logged yet'));
     } else {
       right.append(el('span', 'n', kg(l.value)), ' ');
       const s = el('span', 's');
-      if (l.prev === null) s.textContent = 'no week before';
-      else s.append('was ' + kg(l.prev) + ' · ', l.delta === 0 ? 'level' : change((l.delta > 0 ? '+' : '-') + kg(Math.abs(l.delta)), l.delta > 0 ? 'good' : ''));
+      if (l.prev === null) s.textContent = 'not lifted last week';
+      else s.append('last week ' + kg(l.prev) + ' · ', l.delta === 0 ? 'level' : change((l.delta > 0 ? '+' : '-') + kg(Math.abs(l.delta)), l.delta > 0 ? 'good' : ''));
       right.append(s);
     }
     r.append(right);
@@ -307,9 +371,9 @@ function render() {
   const moved = d.goals.filter((g) => g.pct > 0).length;
   const days = Math.max(0, Math.ceil((new Date(d.final_day + 'T00:00:00Z') - Date.now()) / 864e5));
   const lede = $('lede');
-  lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles compare the week of ' + day(d.week.start) + ' to ' + day(d.week.end) + ' with the week before.');
+  lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles show this week so far, from ' + day(d.week.start) + ', against last week.');
   $('tiles').replaceChildren(); $('goals').replaceChildren();
-  renderTiles(d); renderGoals(d); renderCharts(d); renderCheckins(d);
+  renderWeek(d); renderTiles(d); renderGoals(d); renderCharts(d); renderCheckins(d);
   $('foot').textContent = 'Data refreshed ' + new Date(d.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '.';
 }
 fetch('data.json', { cache: 'no-store' }).then((r) => r.json()).then((d) => { DATA = d; render(); })
