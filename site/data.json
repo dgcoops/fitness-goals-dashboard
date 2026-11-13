@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T12:48+00:00",
+ "generated": "2026-11-13T12:18+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-09",
@@ -46,7 +46,7 @@
      "date": "2026-11-13",
      "day": "Fri",
      "gym_planned": true,
-     "gym_done": false,
+     "gym_done": true,
      "run_planned": false,
      "run_done": false
     },
@@ -370,7 +370,15 @@
   },
   {
    "date": "2026-11-13",
-   "items": []
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Full Body 1",
+     "minutes": 46,
+     "sets": 22,
+     "kg": 3275
+    }
+   ]
   },
   {
    "date": "2026-11-14",
@@ -383,14 +391,14 @@
  ],
  "tiles": {
   "weight": {
-   "value": 105.3,
+   "value": 105.2,
    "prev": 104.5,
-   "delta": 0.8
+   "delta": 0.7
   },
   "bodyfat": {
-   "value": 27.3,
+   "value": 27.2,
    "prev": 24.7,
-   "delta": 2.6
+   "delta": 2.5
   },
   "distance": {
    "value": 7.2,
@@ -398,17 +406,17 @@
    "pct": 44
   },
   "gym": {
-   "value": 2,
+   "value": 3,
    "prev": 0,
    "planned": 3,
-   "total": 2,
+   "total": 3,
    "connected": true
   },
   "lifts": [
    {
     "id": "squat",
     "name": "Squat",
-    "value": 40.0,
+    "value": 50.0,
     "prev": null,
     "delta": null,
     "last_known": null
@@ -416,7 +424,7 @@
    {
     "id": "bench",
     "name": "Bench",
-    "value": null,
+    "value": 50.0,
     "prev": null,
     "delta": null,
     "last_known": null
@@ -438,9 +446,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 105.1,
+   "current": 105.0,
    "target": 95.0,
-   "pct": 13,
+   "pct": 14,
    "pace": 1,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -468,11 +476,11 @@
    "area": "Strength",
    "unit": "kg",
    "start": 30.0,
-   "current": 30.0,
+   "current": 50.0,
    "target": 100.0,
-   "pct": 0,
+   "pct": 29,
    "pace": 1,
-   "basis": "Starting weight",
+   "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
    "smart": "Bench press 100 kg for a set of 5, logged in Hevy, by 17 Oct 2027"
@@ -483,9 +491,9 @@
    "area": "Strength",
    "unit": "kg",
    "start": 40.0,
-   "current": 40.0,
+   "current": 50.0,
    "target": 142.5,
-   "pct": 0,
+   "pct": 10,
    "pace": 1,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
@@ -584,6 +592,15 @@
     "avg_fat": 26.8,
     "fat_mass": 28.28,
     "lean": 76.52
+   },
+   {
+    "date": "2026-11-13",
+    "kg": 104.64,
+    "fat": 26.84,
+    "avg_kg": 105.0,
+    "avg_fat": 26.8,
+    "fat_mass": 28.08,
+    "lean": 76.56
    }
   ],
   "lifts": {
@@ -592,9 +609,20 @@
      "date": "2026-11-09",
      "kg": 40.0,
      "e1rm": 46.7
+    },
+    {
+     "date": "2026-11-13",
+     "kg": 50.0,
+     "e1rm": 58.3
     }
    ],
-   "bench": [],
+   "bench": [
+    {
+     "date": "2026-11-13",
+     "kg": 50.0,
+     "e1rm": 60.0
+    }
+   ],
    "deadlift": [
     {
      "date": "2026-11-11",
@@ -612,7 +640,7 @@
   "gym_weeks": [
    {
     "week": "2026-11-09",
-    "visits": 2
+    "visits": 3
    }
   ]
  },
