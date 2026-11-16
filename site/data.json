@@ -1,11 +1,73 @@
 {
- "generated": "2026-11-15T11:59+00:00",
+ "generated": "2026-11-16T12:50+00:00",
  "final_day": "2027-10-17",
  "week": {
-  "start": "2026-11-09",
-  "end": "2026-11-15"
+  "start": "2026-11-16",
+  "end": "2026-11-22"
  },
  "plan_weeks": [
+  {
+   "start": "2026-11-16",
+   "counts": true,
+   "days": [
+    {
+     "date": "2026-11-16",
+     "day": "Mon",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-17",
+     "day": "Tue",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-18",
+     "day": "Wed",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-19",
+     "day": "Thu",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-20",
+     "day": "Fri",
+     "gym_planned": true,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-21",
+     "day": "Sat",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": true,
+     "run_done": false
+    },
+    {
+     "date": "2026-11-22",
+     "day": "Sun",
+     "gym_planned": false,
+     "gym_done": false,
+     "run_planned": false,
+     "run_done": false
+    }
+   ]
+  },
   {
    "start": "2026-11-09",
    "counts": true,
@@ -67,115 +129,9 @@
      "run_done": false
     }
    ]
-  },
-  {
-   "start": "2026-11-02",
-   "counts": true,
-   "days": [
-    {
-     "date": "2026-11-02",
-     "day": "Mon",
-     "gym_planned": true,
-     "gym_done": false,
-     "run_planned": false,
-     "run_done": false
-    },
-    {
-     "date": "2026-11-03",
-     "day": "Tue",
-     "gym_planned": false,
-     "gym_done": false,
-     "run_planned": true,
-     "run_done": false
-    },
-    {
-     "date": "2026-11-04",
-     "day": "Wed",
-     "gym_planned": true,
-     "gym_done": false,
-     "run_planned": false,
-     "run_done": false
-    },
-    {
-     "date": "2026-11-05",
-     "day": "Thu",
-     "gym_planned": false,
-     "gym_done": false,
-     "run_planned": true,
-     "run_done": false
-    },
-    {
-     "date": "2026-11-06",
-     "day": "Fri",
-     "gym_planned": true,
-     "gym_done": false,
-     "run_planned": false,
-     "run_done": false
-    },
-    {
-     "date": "2026-11-07",
-     "day": "Sat",
-     "gym_planned": false,
-     "gym_done": false,
-     "run_planned": true,
-     "run_done": true
-    },
-    {
-     "date": "2026-11-08",
-     "day": "Sun",
-     "gym_planned": false,
-     "gym_done": false,
-     "run_planned": false,
-     "run_done": false
-    }
-   ]
   }
  ],
  "calendar": [
-  {
-   "date": "2026-10-05",
-   "items": []
-  },
-  {
-   "date": "2026-10-06",
-   "items": [
-    {
-     "kind": "run",
-     "title": "Run",
-     "name": "Singapore Running",
-     "minutes": 30,
-     "km": 5.0
-    }
-   ]
-  },
-  {
-   "date": "2026-10-07",
-   "items": []
-  },
-  {
-   "date": "2026-10-08",
-   "items": []
-  },
-  {
-   "date": "2026-10-09",
-   "items": []
-  },
-  {
-   "date": "2026-10-10",
-   "items": []
-  },
-  {
-   "date": "2026-10-11",
-   "items": [
-    {
-     "kind": "ride",
-     "title": "Ride",
-     "name": "Singapore Road Cycling",
-     "minutes": 153,
-     "km": 66.0
-    }
-   ]
-  },
   {
    "date": "2026-10-12",
    "items": []
@@ -395,27 +351,55 @@
   {
    "date": "2026-11-15",
    "items": []
+  },
+  {
+   "date": "2026-11-16",
+   "items": []
+  },
+  {
+   "date": "2026-11-17",
+   "items": []
+  },
+  {
+   "date": "2026-11-18",
+   "items": []
+  },
+  {
+   "date": "2026-11-19",
+   "items": []
+  },
+  {
+   "date": "2026-11-20",
+   "items": []
+  },
+  {
+   "date": "2026-11-21",
+   "items": []
+  },
+  {
+   "date": "2026-11-22",
+   "items": []
   }
  ],
  "tiles": {
   "weight": {
-   "value": 105.5,
-   "prev": 104.5,
-   "delta": 1.0
+   "value": 106.7,
+   "prev": 105.5,
+   "delta": 1.2
   },
   "bodyfat": {
-   "value": 27.0,
-   "prev": 24.7,
-   "delta": 2.3
+   "value": 25.5,
+   "prev": 27.0,
+   "delta": -1.5
   },
   "distance": {
-   "value": 12.2,
-   "prev": 5.0,
-   "pct": 144
+   "value": 0,
+   "prev": 12.2,
+   "pct": -100
   },
   "gym": {
-   "value": 3,
-   "prev": 0,
+   "value": 0,
+   "prev": 3,
    "planned": 3,
    "total": 3,
    "connected": true
@@ -424,26 +408,26 @@
    {
     "id": "squat",
     "name": "Squat",
-    "value": 50.0,
-    "prev": null,
+    "value": null,
+    "prev": 50.0,
     "delta": null,
-    "last_known": null
+    "last_known": 50.0
    },
    {
     "id": "bench",
     "name": "Bench",
-    "value": 50.0,
-    "prev": null,
+    "value": null,
+    "prev": 50.0,
     "delta": null,
-    "last_known": null
+    "last_known": 50.0
    },
    {
     "id": "deadlift",
     "name": "Deadlift",
-    "value": 70.0,
-    "prev": null,
+    "value": null,
+    "prev": 70.0,
     "delta": null,
-    "last_known": null
+    "last_known": 70.0
    }
   ]
  },
@@ -454,9 +438,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 105.5,
+   "current": 105.6,
    "target": 95.0,
-   "pct": 9,
+   "pct": 8,
    "pace": 2,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -469,9 +453,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 27.0,
+   "current": 26.7,
    "target": 10.0,
-   "pct": 5,
+   "pct": 7,
    "pace": 2,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -627,6 +611,15 @@
     "avg_fat": 27.0,
     "fat_mass": 28.15,
     "lean": 78.95
+   },
+   {
+    "date": "2026-11-16",
+    "kg": 106.67,
+    "fat": 25.47,
+    "avg_kg": 105.6,
+    "avg_fat": 26.7,
+    "fat_mass": 27.17,
+    "lean": 79.5
    }
   ],
   "lifts": {
@@ -671,6 +664,10 @@
    {
     "week": "2026-11-09",
     "visits": 3
+   },
+   {
+    "week": "2026-11-16",
+    "visits": 0
    }
   ]
  },
