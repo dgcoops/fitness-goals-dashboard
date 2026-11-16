@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T12:50+00:00",
+ "generated": "2026-11-16T17:57+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-16",
@@ -14,7 +14,7 @@
      "date": "2026-11-16",
      "day": "Mon",
      "gym_planned": true,
-     "gym_done": false,
+     "gym_done": true,
      "run_planned": false,
      "run_done": false
     },
@@ -354,7 +354,15 @@
   },
   {
    "date": "2026-11-16",
-   "items": []
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Full Body 2",
+     "minutes": 47,
+     "sets": 21,
+     "kg": 4304
+    }
+   ]
   },
   {
    "date": "2026-11-17",
@@ -398,20 +406,20 @@
    "pct": -100
   },
   "gym": {
-   "value": 0,
+   "value": 1,
    "prev": 3,
    "planned": 3,
-   "total": 3,
+   "total": 4,
    "connected": true
   },
   "lifts": [
    {
     "id": "squat",
     "name": "Squat",
-    "value": null,
+    "value": 55.0,
     "prev": 50.0,
-    "delta": null,
-    "last_known": 50.0
+    "delta": 5.0,
+    "last_known": null
    },
    {
     "id": "bench",
@@ -483,9 +491,9 @@
    "area": "Strength",
    "unit": "kg",
    "start": 40.0,
-   "current": 50.0,
+   "current": 55.0,
    "target": 142.5,
-   "pct": 10,
+   "pct": 15,
    "pace": 2,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
@@ -633,6 +641,11 @@
      "date": "2026-11-13",
      "kg": 50.0,
      "e1rm": 58.3
+    },
+    {
+     "date": "2026-11-16",
+     "kg": 55.0,
+     "e1rm": 64.2
     }
    ],
    "bench": [
@@ -667,7 +680,7 @@
    },
    {
     "week": "2026-11-16",
-    "visits": 0
+    "visits": 1
    }
   ]
  },
