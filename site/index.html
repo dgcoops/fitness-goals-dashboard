@@ -13,10 +13,12 @@
 :root {
   --bg: #f6f5f1; --panel: #ffffff; --ink: #14140f; --muted: #6b6a63; --line: #e2e0d8;
   --body: #2a78d6; --strength: #eb6834; --running: #1baf7a; --good: #0b7a35; --done: #17964a; --missed: #d63a2f; --warn: #a15c00; --ref: #b4b2a9;
+  --pill-good-bg: #e2f3e7; --pill-good: #17703a; --pill-bad-bg: #fbe4e2; --pill-bad: #a8261d; --pill-flat-bg: #eeece6;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121211; --panel: #1c1c1a; --ink: #f0efec; --muted: #a3a199; --line: #2e2e2b;
-    --body: #3987e5; --strength: #e0703f; --running: #22b07f; --good: #4cc77a; --done: #1e9e52; --missed: #d9483d; --warn: #e0a040; --ref: #5f5e5a; }
+    --body: #3987e5; --strength: #e0703f; --running: #22b07f; --good: #4cc77a; --done: #1e9e52; --missed: #d9483d; --warn: #e0a040; --ref: #5f5e5a;
+    --pill-good-bg: #173a24; --pill-good: #7fd8a0; --pill-bad-bg: #44201d; --pill-bad: #ff9a8f; --pill-flat-bg: #2a2a27; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Archivo, -apple-system, "Segoe UI", sans-serif; }
@@ -27,6 +29,20 @@ h2 { font: 700 21px/1.15 "Saira Condensed", "Arial Narrow", sans-serif; margin: 
 .lede b { color: var(--ink); }
 .note { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
 section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-top: 16px; }
+.mets-card { margin-top: 16px; }
+.mets-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.mets-head h2 { margin: 0; }
+.mets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 16px; padding-top: 14px; }
+.met-k { display: flex; align-items: center; gap: 7px; font-size: 14.5px; color: var(--muted); }
+.met-sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.met-v { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; margin-top: 6px; }
+.met-n { font: 600 30px/1 "Saira Condensed", "Arial Narrow", sans-serif; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 999px; font-size: 14px; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pill-a { font-size: 13px; }
+.pill.good { background: var(--pill-good-bg); color: var(--pill-good); }
+.pill.bad { background: var(--pill-bad-bg); color: var(--pill-bad); }
+.pill.flat { background: var(--pill-flat-bg); color: var(--muted); }
+.met-note { margin-top: 6px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
 .tile .k { font-size: 13px; color: var(--muted); }
@@ -112,7 +128,7 @@ footer { margin-top: 20px; font-size: 12.5px; color: var(--muted); }
 
   <section id="week" style="margin-top:0" hidden></section>
 
-  <div class="tiles" id="tiles" style="margin-top:16px"></div>
+  <div id="tiles"></div>
 
   <section>
     <h2>Goal progress</h2>
@@ -235,47 +251,85 @@ function tidyComparisons(root) {
   });
 }
 
+// One card of metrics: coloured key, label, this week's value and a pill comparing it with last week.
+// tone: 'good' (green), 'bad' (red) or 'flat' (grey, used mid-week when there is still time to catch up).
+function metric(label, color, value, pill, note) {
+  const m = el('div', 'met');
+  const k = el('div', 'met-k'), sw = el('span', 'met-sw');
+  sw.style.background = 'var(' + color + ')';
+  k.append(sw, label);
+  const v = el('div', 'met-v');
+  v.append(el('span', 'met-n', value));
+  if (pill) {
+    const p = el('span', 'pill ' + pill.tone);
+    if (pill.arrow) p.append(el('span', 'pill-a', pill.arrow));
+    p.append(pill.text);
+    p.setAttribute('aria-label', pill.say || pill.text);
+    v.append(p);
+  }
+  m.append(k, v);
+  if (note) m.append(el('div', 'met-note', note));
+  return m;
+}
+
 function renderTiles(d) {
   const t = d.tiles, box = $('tiles');
-  const body = (x, unit, label) => {
-    const u = unit === ' kg' ? ' kg' : '%';
-    if (x.value === null) return tile(label, '—', x.prev === null ? 'No weigh-ins yet this week' : 'No weigh-ins yet this week · last week ' + f1(x.prev) + u);
-    const sub = x.prev === null ? ['No last week to compare']
-      : ['Last week ' + f1(x.prev) + u + ' · ', change(signed(x.delta, unit), x.delta < 0 ? 'good' : x.delta > 0 ? 'warn' : '')];
-    return tile(label, f1(x.value) + u, sub);
+  const grid = el('div', 'mets');
+  const up = '↗', down = '↘';
+  const vsKg = (x, unit) => x.prev === null ? 'No last week to compare' : 'Last week ' + f1(x.prev) + unit;
+
+  // Body: lower is better.
+  const body = (x, label, unit, pillUnit) => {
+    if (x.value === null) return metric(label, '--body', '—', null, x.prev === null ? 'No weigh-ins yet' : 'No weigh-ins yet · last week ' + f1(x.prev) + unit);
+    const pill = x.delta === null ? null : x.delta === 0 ? { tone: 'flat', text: 'level' }
+      : { tone: x.delta < 0 ? 'good' : 'bad', arrow: x.delta < 0 ? down : up, text: f1(Math.abs(x.delta)) + pillUnit,
+          say: (x.delta < 0 ? 'down ' : 'up ') + f1(Math.abs(x.delta)) + pillUnit + ' on last week' };
+    return metric(label, '--body', f1(x.value) + unit, pill, vsKg(x, unit));
   };
-  box.append(body(t.weight, ' kg', 'Body weight, this week so far'), body(t.bodyfat, '% bf', 'Body fat, this week so far'));
+  grid.append(body(t.weight, 'Body weight', ' kg', ' kg'), body(t.bodyfat, 'Body fat', '%', '%'));
 
-  if (!t.distance) box.append(tile('Distance Ran This Week', '—', 'Waiting for the Garmin connection'));
-  else {
-    const gap = Math.round((t.distance.prev - t.distance.value) * 10) / 10;
-    box.append(tile('Distance Ran This Week', f1(t.distance.value) + ' km',
-      ['Last week ' + f1(t.distance.prev) + ' km · ', gap > 0 ? f1(gap) + ' km to match it' : change(t.distance.prev > 0 ? 'last week beaten' : 'on the board', 'good')]));
-  }
+  // Count-ups through the week: red only once the week is over and still short.
+  const weekOver = londonToday() > d.week.end;
+  const tally = (cur, prev, unit, fmt) => {
+    if (prev === null) return null;
+    const diff = Math.round((cur - prev) * 10) / 10;
+    if (diff >= 0) return { tone: 'good', arrow: up, text: prev === 0 && cur === 0 ? 'level' : fmt(diff) + unit, say: 'ahead of last week by ' + fmt(diff) + unit };
+    return { tone: weekOver ? 'bad' : 'flat', arrow: weekOver ? down : '', text: fmt(-diff) + unit + ' to go', say: fmt(-diff) + unit + ' to match last week' };
+  };
 
-  if (!t.gym.connected) box.append(tile('Gym visits this week', '—', 'Waiting for the first Hevy sync'));
-  else box.append(tile('Gym visits this week', t.gym.value + ' of ' + t.gym.planned,
-    'Last week ' + t.gym.prev + ' of ' + t.gym.planned + ' · ' + t.gym.total + ' total'));
+  if (!t.distance) grid.append(metric('Distance ran', '--running', '—', null, 'Waiting for Garmin'));
+  else grid.append(metric('Distance ran', '--running', f1(t.distance.value) + ' km',
+    tally(t.distance.value, t.distance.prev, ' km', f1), 'Last week ' + f1(t.distance.prev) + ' km'));
 
-  const lifts = tile('Best set of 5 this week', undefined, null, true);
+  const wk = (d.plan_weeks || [])[0], lw = (d.plan_weeks || [])[1];
+  const runs = (w) => w ? w.days.filter((x) => x.run_done).length : null;
+  const runPlan = wk ? wk.days.filter((x) => x.run_planned).length : 3;
+  if (wk) grid.append(metric('Runs', '--running', runs(wk) + ' of ' + runPlan,
+    tally(runs(wk), runs(lw), '', String), 'Last week ' + runs(lw) + ' of ' + runPlan));
+
+  if (!t.gym.connected) grid.append(metric('Gym sessions', '--strength', '—', null, 'Waiting for Hevy'));
+  else grid.append(metric('Gym sessions', '--strength', t.gym.value + ' of ' + t.gym.planned,
+    tally(t.gym.value, t.gym.prev, '', String), 'Last week ' + t.gym.prev + ' of ' + t.gym.planned));
+
+  // Lifts: best set of 5 this week against last week.
   for (const l of t.lifts) {
-    const r = el('div', 'lift');
-    r.append(el('span', '', l.name));
-    const right = el('span');
+    const label = l.name + ' 5RM';
     if (l.value === null) {
-      right.append(el('span', 's', l.prev !== null ? 'Not yet this week · last week ' + kg(l.prev)
-        : l.last_known ? 'Not yet this week · best so far ' + kg(l.last_known) : 'No set of 5 logged yet'));
-    } else {
-      right.append(el('span', 'n', kg(l.value)), ' ');
-      const s = el('span', 's');
-      if (l.prev === null) s.textContent = 'not lifted last week';
-      else s.append('last week ' + kg(l.prev) + ' · ', l.delta === 0 ? 'level' : change((l.delta > 0 ? '+' : '-') + kg(Math.abs(l.delta)), l.delta > 0 ? 'good' : ''));
-      right.append(s);
+      grid.append(metric(label, '--strength', '—', { tone: 'flat', text: 'not yet' },
+        l.prev !== null ? 'Last week ' + kg(l.prev) : l.last_known ? 'Best so far ' + kg(l.last_known) : 'No set of 5 logged yet'));
+      continue;
     }
-    r.append(right);
-    lifts.append(r);
+    const pill = l.prev === null ? null : l.delta === 0 ? { tone: 'flat', text: 'level' }
+      : { tone: l.delta > 0 ? 'good' : 'bad', arrow: l.delta > 0 ? up : down, text: kg(Math.abs(l.delta)),
+          say: (l.delta > 0 ? 'up ' : 'down ') + kg(Math.abs(l.delta)) + ' on last week' };
+    grid.append(metric(label, '--strength', kg(l.value), pill, l.prev === null ? 'Not lifted last week' : 'Last week ' + kg(l.prev)));
   }
-  box.append(lifts);
+
+  const card = el('section', 'mets-card');
+  const head = el('div', 'mets-head');
+  head.append(el('h2', '', 'This week so far'), el('span', 'sub', 'against last week'));
+  card.append(head, grid);
+  box.replaceChildren(card);
 }
 
 // Slide a finger or mouse along a goal bar to see the date and the value a steady path reaches by then.
@@ -514,7 +568,7 @@ function render() {
   const lede = $('lede');
   lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles show this week so far, from ' + day(d.week.start) + ', against last week.');
   $('tiles').replaceChildren(); $('goals').replaceChildren();
-  renderWeek(d); renderTiles(d); tidyComparisons($('tiles')); renderGoals(d); renderCharts(d); renderCalendar(d); renderCheckins(d);
+  renderWeek(d); renderTiles(d); renderGoals(d); renderCharts(d); renderCalendar(d); renderCheckins(d);
   $('foot').textContent = 'Data refreshed ' + new Date(d.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '.';
 }
 fetch('data.json', { cache: 'no-store' }).then((r) => r.json()).then((d) => { DATA = d; render(); })
