@@ -31,7 +31,9 @@ section { background: var(--panel); border: 1px solid var(--line); border-radius
 .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
 .tile .k { font-size: 13px; color: var(--muted); }
 .tile .v { font: 600 32px/1.1 "Saira Condensed", "Arial Narrow", sans-serif; font-variant-numeric: tabular-nums; margin: 2px 0; }
-.tile .s, .lift .s { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tile .s, .lift .s { font-size: clamp(13.5px, 3.9vw, 15.5px); line-height: 1.35; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tile .s .good, .tile .s .warn, .lift .s .good, .lift .s .warn { font-weight: 600; }
+.s .part { display: inline-block; white-space: nowrap; margin-right: 8px; }
 .wide { grid-column: 1 / -1; }
 .lift { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .lift .n { font: 600 22px "Saira Condensed", "Arial Narrow", sans-serif; }
@@ -220,6 +222,17 @@ function renderWeek(d) {
   }
   box.hidden = false;
   box.replaceChildren(head, sum, grid, key);
+}
+
+function tidyComparisons(root) {
+  root.querySelectorAll('.s').forEach((s) => {
+    const parts = [];
+    for (const n of [...s.childNodes]) {
+      if (n.nodeType === 3) for (const bit of n.textContent.split(' · ')) { if (bit.trim()) parts.push(el('span', 'part', bit.trim())); }
+      else { n.classList.add('part'); parts.push(n); }
+    }
+    s.replaceChildren(...parts);
+  });
 }
 
 function renderTiles(d) {
@@ -501,7 +514,7 @@ function render() {
   const lede = $('lede');
   lede.replaceChildren(el('b', '', String(moved)), ' of ', el('b', '', String(d.goals.length)), ' goals have moved off the start line, with ', el('b', '', String(days)), ' days to go. Tiles show this week so far, from ' + day(d.week.start) + ', against last week.');
   $('tiles').replaceChildren(); $('goals').replaceChildren();
-  renderWeek(d); renderTiles(d); renderGoals(d); renderCharts(d); renderCalendar(d); renderCheckins(d);
+  renderWeek(d); renderTiles(d); tidyComparisons($('tiles')); renderGoals(d); renderCharts(d); renderCalendar(d); renderCheckins(d);
   $('foot').textContent = 'Data refreshed ' + new Date(d.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + '.';
 }
 fetch('data.json', { cache: 'no-store' }).then((r) => r.json()).then((d) => { DATA = d; render(); })
