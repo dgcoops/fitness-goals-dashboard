@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T13:31+00:00",
+ "generated": "2026-11-18T08:07+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-16",
@@ -30,7 +30,7 @@
      "date": "2026-11-18",
      "day": "Wed",
      "gym_planned": true,
-     "gym_done": false,
+     "gym_done": true,
      "run_planned": false,
      "run_done": false
     },
@@ -378,7 +378,15 @@
   },
   {
    "date": "2026-11-18",
-   "items": []
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Full Body 3",
+     "minutes": 53,
+     "sets": 21,
+     "kg": 5249
+    }
+   ]
   },
   {
    "date": "2026-11-19",
@@ -399,14 +407,14 @@
  ],
  "tiles": {
   "weight": {
-   "value": 106.5,
+   "value": 106.4,
    "prev": 105.5,
-   "delta": 1.0
+   "delta": 0.9
   },
   "bodyfat": {
-   "value": 26.1,
+   "value": 26.2,
    "prev": 27.0,
-   "delta": -0.9
+   "delta": -0.8
   },
   "distance": {
    "value": 4.0,
@@ -414,10 +422,10 @@
    "pct": -67
   },
   "gym": {
-   "value": 1,
+   "value": 2,
    "prev": 3,
    "planned": 3,
-   "total": 4,
+   "total": 5,
    "connected": true
   },
   "lifts": [
@@ -440,10 +448,10 @@
    {
     "id": "deadlift",
     "name": "Deadlift",
-    "value": null,
+    "value": 75.0,
     "prev": 70.0,
-    "delta": null,
-    "last_known": 70.0
+    "delta": 5.0,
+    "last_known": null
    }
   ]
  },
@@ -454,9 +462,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 105.7,
+   "current": 105.9,
    "target": 95.0,
-   "pct": 8,
+   "pct": 6,
    "pace": 3,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -469,9 +477,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.6,
+   "current": 26.5,
    "target": 10.0,
-   "pct": 7,
+   "pct": 8,
    "pace": 3,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -514,9 +522,9 @@
    "area": "Strength",
    "unit": "kg",
    "start": 60.0,
-   "current": 70.0,
+   "current": 75.0,
    "target": 190.0,
-   "pct": 8,
+   "pct": 12,
    "pace": 3,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
@@ -645,6 +653,15 @@
     "avg_fat": 26.6,
     "fat_mass": 28.46,
     "lean": 77.89
+   },
+   {
+    "date": "2026-11-18",
+    "kg": 106.13,
+    "fat": 26.45,
+    "avg_kg": 105.9,
+    "avg_fat": 26.5,
+    "fat_mass": 28.07,
+    "lean": 78.06
    }
   ],
   "lifts": {
@@ -677,6 +694,11 @@
      "date": "2026-11-11",
      "kg": 70.0,
      "e1rm": 81.7
+    },
+    {
+     "date": "2026-11-18",
+     "kg": 75.0,
+     "e1rm": 87.5
     }
    ]
   },
@@ -697,7 +719,7 @@
    },
    {
     "week": "2026-11-16",
-    "visits": 1
+    "visits": 2
    }
   ]
  },
