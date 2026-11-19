@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-18T13:08+00:00",
+ "generated": "2026-11-19T13:20+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-16",
@@ -40,7 +40,7 @@
      "gym_planned": false,
      "gym_done": false,
      "run_planned": true,
-     "run_done": false
+     "run_done": true
     },
     {
      "date": "2026-11-20",
@@ -217,6 +217,13 @@
      "name": "Singapore Road Cycling",
      "minutes": 115,
      "km": 60.2
+    },
+    {
+     "kind": "ride",
+     "title": "Ride",
+     "name": "Singapore Cycling",
+     "minutes": 10,
+     "km": 3.8
     }
    ]
   },
@@ -390,7 +397,15 @@
   },
   {
    "date": "2026-11-19",
-   "items": []
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 29,
+     "km": 4.5
+    }
+   ]
   },
   {
    "date": "2026-11-20",
@@ -407,19 +422,19 @@
  ],
  "tiles": {
   "weight": {
-   "value": 106.4,
+   "value": 106.2,
    "prev": 105.5,
-   "delta": 0.9
+   "delta": 0.7
   },
   "bodyfat": {
-   "value": 26.2,
+   "value": 26.7,
    "prev": 27.0,
-   "delta": -0.8
+   "delta": -0.3
   },
   "distance": {
-   "value": 4.0,
+   "value": 8.6,
    "prev": 12.2,
-   "pct": -67
+   "pct": -30
   },
   "gym": {
    "value": 2,
@@ -462,9 +477,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 105.9,
+   "current": 106.1,
    "target": 95.0,
-   "pct": 6,
+   "pct": 4,
    "pace": 3,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -477,9 +492,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.5,
+   "current": 26.7,
    "target": 10.0,
-   "pct": 8,
+   "pct": 7,
    "pace": 3,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -662,6 +677,24 @@
     "avg_fat": 26.5,
     "fat_mass": 28.07,
     "lean": 78.06
+   },
+   {
+    "date": "2026-11-19",
+    "kg": 106.15,
+    "fat": 27.25,
+    "avg_kg": 106.1,
+    "avg_fat": 26.7,
+    "fat_mass": 28.93,
+    "lean": 77.22
+   },
+   {
+    "date": "2026-11-19",
+    "kg": 105.68,
+    "fat": 27.59,
+    "avg_kg": 106.1,
+    "avg_fat": 26.7,
+    "fat_mass": 29.16,
+    "lean": 76.52
    }
   ],
   "lifts": {
