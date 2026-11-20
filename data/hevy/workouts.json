@@ -3528,5 +3528,350 @@
   "start_time": "2026-11-18T06:41:07+00:00",
   "title": "Full Body 3",
   "updated_at": "2026-11-18T07:34:14.622Z"
+ },
+ {
+  "created_at": "2026-11-20T08:42:58.324Z",
+  "description": "",
+  "end_time": "2026-11-20T08:42:56+00:00",
+  "exercises": [
+   {
+    "exercise_template_id": "0222DB42",
+    "index": 0,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": 1000,
+      "duration_seconds": 242,
+      "index": 0,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     }
+    ],
+    "superset_id": null,
+    "title": "Rowing Machine"
+   },
+   {
+    "exercise_template_id": "D04AC939",
+    "index": 1,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 8,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 20
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 8,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 20
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 6,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 55
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 3,
+      "reps": 6,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 55
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 4,
+      "reps": 6,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 55
+     }
+    ],
+    "superset_id": null,
+    "title": "Squat (Barbell)"
+   },
+   {
+    "exercise_template_id": "79D0BB3A",
+    "index": 2,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 10,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 20
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 6,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 8,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 3,
+      "reps": 8,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     }
+    ],
+    "superset_id": null,
+    "title": "Bench Press (Barbell)"
+   },
+   {
+    "exercise_template_id": "6A6C31A5",
+    "index": 3,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 12,
+      "rpe": null,
+      "type": "warmup",
+      "weight_kg": 40
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 8,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 50
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 9,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 55
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 3,
+      "reps": 7,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 60
+     }
+    ],
+    "superset_id": null,
+    "title": "Lat Pulldown (Cable)"
+   },
+   {
+    "exercise_template_id": "8BAB2735",
+    "index": 4,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 16
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 16
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 16
+     }
+    ],
+    "superset_id": null,
+    "title": "Seated Incline Curl (Dumbbell)"
+   },
+   {
+    "exercise_template_id": "06745E58",
+    "index": 5,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     }
+    ],
+    "superset_id": null,
+    "title": "Standing Calf Raise"
+   },
+   {
+    "exercise_template_id": "C6C9B8A0",
+    "index": 6,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": 60,
+      "index": 0,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": 60,
+      "index": 1,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": 62,
+      "index": 2,
+      "reps": null,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": null
+     }
+    ],
+    "superset_id": null,
+    "title": "Plank"
+   },
+   {
+    "exercise_template_id": "2982AA23",
+    "index": 7,
+    "notes": null,
+    "sets": [
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 0,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 6
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 1,
+      "reps": 10,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 6
+     },
+     {
+      "custom_metric": null,
+      "distance_meters": null,
+      "duration_seconds": null,
+      "index": 2,
+      "reps": 12,
+      "rpe": null,
+      "type": "normal",
+      "weight_kg": 6
+     }
+    ],
+    "superset_id": null,
+    "title": "Russian Twist (Weighted)"
+   }
+  ],
+  "id": "46a2fda5-2a82-47ae-83f2-1bdfa6bf16af",
+  "media": [],
+  "routine_id": null,
+  "start_time": "2026-11-20T07:49:53+00:00",
+  "title": "Full Body 1",
+  "updated_at": "2026-11-20T08:42:58.324Z"
  }
 ]

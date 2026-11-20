@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T13:20+00:00",
+ "generated": "2026-11-20T09:46+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-16",
@@ -46,7 +46,7 @@
      "date": "2026-11-20",
      "day": "Fri",
      "gym_planned": true,
-     "gym_done": false,
+     "gym_done": true,
      "run_planned": false,
      "run_done": false
     },
@@ -409,7 +409,15 @@
   },
   {
    "date": "2026-11-20",
-   "items": []
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Full Body 1",
+     "minutes": 53,
+     "sets": 22,
+     "kg": 4077
+    }
+   ]
   },
   {
    "date": "2026-11-21",
@@ -427,9 +435,9 @@
    "delta": 0.7
   },
   "bodyfat": {
-   "value": 26.7,
+   "value": 26.5,
    "prev": 27.0,
-   "delta": -0.3
+   "delta": -0.5
   },
   "distance": {
    "value": 8.6,
@@ -437,10 +445,10 @@
    "pct": -30
   },
   "gym": {
-   "value": 2,
+   "value": 3,
    "prev": 3,
    "planned": 3,
-   "total": 5,
+   "total": 6,
    "connected": true
   },
   "lifts": [
@@ -455,10 +463,10 @@
    {
     "id": "bench",
     "name": "Bench",
-    "value": null,
+    "value": 50.0,
     "prev": 50.0,
-    "delta": null,
-    "last_known": 50.0
+    "delta": 0.0,
+    "last_known": null
    },
    {
     "id": "deadlift",
@@ -477,9 +485,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 106.1,
+   "current": 106.3,
    "target": 95.0,
-   "pct": 4,
+   "pct": 2,
    "pace": 3,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -492,9 +500,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.7,
+   "current": 26.5,
    "target": 10.0,
-   "pct": 7,
+   "pct": 8,
    "pace": 3,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -555,7 +563,7 @@
    "current": 1578.0,
    "target": 1200.0,
    "pct": 37,
-   "pace": 3,
+   "pace": 4,
    "basis": "Fastest Saturday 5k on Garmin",
    "start_date": "2026-11-08",
    "deadline": "2027-10-16",
@@ -570,7 +578,7 @@
    "current": 8100.0,
    "target": 6300.0,
    "pct": 0,
-   "pace": 3,
+   "pace": 4,
    "basis": "Starting time",
    "start_date": "2026-11-08",
    "deadline": "2027-10-10",
@@ -680,21 +688,21 @@
    },
    {
     "date": "2026-11-19",
-    "kg": 106.15,
-    "fat": 27.25,
-    "avg_kg": 106.1,
-    "avg_fat": 26.7,
-    "fat_mass": 28.93,
-    "lean": 77.22
-   },
-   {
-    "date": "2026-11-19",
     "kg": 105.68,
     "fat": 27.59,
     "avg_kg": 106.1,
-    "avg_fat": 26.7,
+    "avg_fat": 26.6,
     "fat_mass": 29.16,
     "lean": 76.52
+   },
+   {
+    "date": "2026-11-20",
+    "kg": 106.29,
+    "fat": 26.27,
+    "avg_kg": 106.3,
+    "avg_fat": 26.5,
+    "fat_mass": 27.92,
+    "lean": 78.37
    }
   ],
   "lifts": {
@@ -713,6 +721,11 @@
      "date": "2026-11-16",
      "kg": 55.0,
      "e1rm": 64.2
+    },
+    {
+     "date": "2026-11-20",
+     "kg": 55.0,
+     "e1rm": 66.0
     }
    ],
    "bench": [
@@ -720,6 +733,11 @@
      "date": "2026-11-13",
      "kg": 50.0,
      "e1rm": 60.0
+    },
+    {
+     "date": "2026-11-20",
+     "kg": 50.0,
+     "e1rm": 63.3
     }
    ],
    "deadlift": [
@@ -752,7 +770,7 @@
    },
    {
     "week": "2026-11-16",
-    "visits": 2
+    "visits": 3
    }
   ]
  },
