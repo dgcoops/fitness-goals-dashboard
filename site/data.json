@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T08:47+00:00",
+ "generated": "2026-11-21T09:52+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-16",
@@ -56,7 +56,7 @@
      "gym_planned": false,
      "gym_done": false,
      "run_planned": true,
-     "run_done": false
+     "run_done": true
     },
     {
      "date": "2026-11-22",
@@ -421,7 +421,22 @@
   },
   {
    "date": "2026-11-21",
-   "items": []
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 5,
+     "km": 0.7
+    },
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 26,
+     "km": 5.0
+    }
+   ]
   },
   {
    "date": "2026-11-22",
@@ -440,9 +455,9 @@
    "delta": -0.5
   },
   "distance": {
-   "value": 8.6,
+   "value": 14.2,
    "prev": 12.2,
-   "pct": -30
+   "pct": 16
   },
   "gym": {
    "value": 3,
@@ -560,9 +575,9 @@
    "area": "Running",
    "unit": "time",
    "start": 1800.0,
-   "current": 1578.0,
+   "current": 1567.0,
    "target": 1200.0,
-   "pct": 37,
+   "pct": 39,
    "pace": 4,
    "basis": "Fastest Saturday 5k on Garmin",
    "start_date": "2026-11-08",
@@ -761,6 +776,10 @@
    {
     "date": "2026-11-14",
     "seconds": 1756.0
+   },
+   {
+    "date": "2026-11-21",
+    "seconds": 1567.0
    }
   ],
   "gym_weeks": [
