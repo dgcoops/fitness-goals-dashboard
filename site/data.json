@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T14:46+00:00",
+ "generated": "2026-11-24T08:28+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-23",
@@ -24,7 +24,7 @@
      "gym_planned": false,
      "gym_done": false,
      "run_planned": true,
-     "run_done": false
+     "run_done": true
     },
     {
      "date": "2026-11-25",
@@ -420,7 +420,15 @@
   },
   {
    "date": "2026-11-24",
-   "items": []
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 29,
+     "km": 4.6
+    }
+   ]
   },
   {
    "date": "2026-11-25",
@@ -445,19 +453,19 @@
  ],
  "tiles": {
   "weight": {
-   "value": 107.1,
+   "value": 107.2,
    "prev": 106.3,
-   "delta": 0.8
+   "delta": 0.9
   },
   "bodyfat": {
-   "value": 26.5,
+   "value": 26.3,
    "prev": 26.4,
-   "delta": 0.1
+   "delta": -0.1
   },
   "distance": {
-   "value": 0,
+   "value": 4.6,
    "prev": 14.2,
-   "pct": -100
+   "pct": -68
   },
   "gym": {
    "value": 1,
@@ -500,10 +508,10 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 106.4,
+   "current": 106.5,
    "target": 95.0,
-   "pct": 2,
-   "pace": 4,
+   "pct": 1,
+   "pace": 5,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -515,10 +523,10 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.6,
+   "current": 26.5,
    "target": 10.0,
-   "pct": 7,
-   "pace": 4,
+   "pct": 8,
+   "pace": 5,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -533,7 +541,7 @@
    "current": 50.0,
    "target": 100.0,
    "pct": 17,
-   "pace": 4,
+   "pace": 5,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -548,7 +556,7 @@
    "current": 60.0,
    "target": 142.5,
    "pct": 20,
-   "pace": 4,
+   "pace": 5,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -563,7 +571,7 @@
    "current": 75.0,
    "target": 190.0,
    "pct": 12,
-   "pace": 4,
+   "pace": 5,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -578,7 +586,7 @@
    "current": 1567.0,
    "target": 1200.0,
    "pct": 39,
-   "pace": 4,
+   "pace": 5,
    "basis": "Fastest Saturday 5k on Garmin",
    "start_date": "2026-11-08",
    "deadline": "2027-10-16",
@@ -593,7 +601,7 @@
    "current": 8100.0,
    "target": 6300.0,
    "pct": 0,
-   "pace": 4,
+   "pace": 5,
    "basis": "Starting time",
    "start_date": "2026-11-08",
    "deadline": "2027-10-10",
@@ -736,6 +744,15 @@
     "avg_fat": 26.6,
     "fat_mass": 28.4,
     "lean": 78.66
+   },
+   {
+    "date": "2026-11-24",
+    "kg": 107.28,
+    "fat": 26.1,
+    "avg_kg": 106.5,
+    "avg_fat": 26.5,
+    "fat_mass": 28.0,
+    "lean": 79.28
    }
   ],
   "lifts": {
