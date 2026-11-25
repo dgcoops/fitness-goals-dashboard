@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T15:07+00:00",
+ "generated": "2026-11-25T15:16+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-23",
@@ -30,7 +30,7 @@
      "date": "2026-11-25",
      "day": "Wed",
      "gym_planned": true,
-     "gym_done": false,
+     "gym_done": true,
      "run_planned": false,
      "run_done": false
     },
@@ -432,7 +432,15 @@
   },
   {
    "date": "2026-11-25",
-   "items": []
+   "items": [
+    {
+     "kind": "gym",
+     "title": "Full Body 3",
+     "minutes": 35,
+     "sets": 22,
+     "kg": 5944
+    }
+   ]
   },
   {
    "date": "2026-11-26",
@@ -468,10 +476,10 @@
    "pct": -68
   },
   "gym": {
-   "value": 1,
+   "value": 2,
    "prev": 3,
    "planned": 3,
-   "total": 7,
+   "total": 8,
    "connected": true
   },
   "lifts": [
@@ -486,18 +494,18 @@
    {
     "id": "bench",
     "name": "Bench",
-    "value": null,
+    "value": 55.0,
     "prev": 50.0,
-    "delta": null,
-    "last_known": 50.0
+    "delta": 5.0,
+    "last_known": null
    },
    {
     "id": "deadlift",
     "name": "Deadlift",
-    "value": null,
+    "value": 80.0,
     "prev": 75.0,
-    "delta": null,
-    "last_known": 75.0
+    "delta": 5.0,
+    "last_known": null
    }
   ]
  },
@@ -538,9 +546,9 @@
    "area": "Strength",
    "unit": "kg",
    "start": 40.0,
-   "current": 50.0,
+   "current": 55.0,
    "target": 100.0,
-   "pct": 17,
+   "pct": 25,
    "pace": 5,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
@@ -568,9 +576,9 @@
    "area": "Strength",
    "unit": "kg",
    "start": 60.0,
-   "current": 75.0,
+   "current": 80.0,
    "target": 190.0,
-   "pct": 12,
+   "pct": 15,
    "pace": 5,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
@@ -802,6 +810,11 @@
      "date": "2026-11-20",
      "kg": 50.0,
      "e1rm": 63.3
+    },
+    {
+     "date": "2026-11-25",
+     "kg": 55.0,
+     "e1rm": 67.8
     }
    ],
    "deadlift": [
@@ -814,6 +827,11 @@
      "date": "2026-11-18",
      "kg": 75.0,
      "e1rm": 87.5
+    },
+    {
+     "date": "2026-11-25",
+     "kg": 80.0,
+     "e1rm": 93.3
     }
    ]
   },
@@ -842,7 +860,7 @@
    },
    {
     "week": "2026-11-23",
-    "visits": 1
+    "visits": 2
    }
   ]
  },
