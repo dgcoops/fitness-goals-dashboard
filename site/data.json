@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24T14:55+00:00",
+ "generated": "2026-11-25T14:29+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-23",
@@ -453,14 +453,14 @@
  ],
  "tiles": {
   "weight": {
-   "value": 107.2,
+   "value": 106.8,
    "prev": 106.3,
-   "delta": 0.9
+   "delta": 0.5
   },
   "bodyfat": {
-   "value": 26.3,
+   "value": 26.6,
    "prev": 26.4,
-   "delta": -0.1
+   "delta": 0.2
   },
   "distance": {
    "value": 4.6,
@@ -523,9 +523,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.5,
+   "current": 26.6,
    "target": 10.0,
-   "pct": 8,
+   "pct": 7,
    "pace": 5,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -753,6 +753,15 @@
     "avg_fat": 26.5,
     "fat_mass": 28.0,
     "lean": 79.28
+   },
+   {
+    "date": "2026-11-25",
+    "kg": 105.96,
+    "fat": 27.02,
+    "avg_kg": 106.5,
+    "avg_fat": 26.6,
+    "fat_mass": 28.63,
+    "lean": 77.33
    }
   ],
   "lifts": {
