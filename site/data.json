@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T15:16+00:00",
+ "generated": "2026-11-26T09:34+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-23",
@@ -40,7 +40,7 @@
      "gym_planned": false,
      "gym_done": false,
      "run_planned": true,
-     "run_done": false
+     "run_done": true
     },
     {
      "date": "2026-11-27",
@@ -444,7 +444,15 @@
   },
   {
    "date": "2026-11-26",
-   "items": []
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford Running",
+     "minutes": 33,
+     "km": 5.2
+    }
+   ]
   },
   {
    "date": "2026-11-27",
@@ -461,19 +469,19 @@
  ],
  "tiles": {
   "weight": {
-   "value": 106.8,
+   "value": 106.6,
    "prev": 106.3,
-   "delta": 0.5
+   "delta": 0.3
   },
   "bodyfat": {
-   "value": 26.6,
+   "value": 26.7,
    "prev": 26.4,
-   "delta": 0.2
+   "delta": 0.3
   },
   "distance": {
-   "value": 4.6,
+   "value": 9.9,
    "prev": 14.2,
-   "pct": -68
+   "pct": -30
   },
   "gym": {
    "value": 2,
@@ -516,9 +524,9 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 106.5,
+   "current": 106.6,
    "target": 95.0,
-   "pct": 1,
+   "pct": 0,
    "pace": 5,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -531,9 +539,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.6,
+   "current": 26.5,
    "target": 10.0,
-   "pct": 7,
+   "pct": 8,
    "pace": 5,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -770,6 +778,15 @@
     "avg_fat": 26.6,
     "fat_mass": 28.63,
     "lean": 77.33
+   },
+   {
+    "date": "2026-11-26",
+    "kg": 106.28,
+    "fat": 27.12,
+    "avg_kg": 106.6,
+    "avg_fat": 26.5,
+    "fat_mass": 28.82,
+    "lean": 77.46
    }
   ],
   "lifts": {
