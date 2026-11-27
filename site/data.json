@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T13:58+00:00",
+ "generated": "2026-11-27T13:56+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-23",
@@ -469,14 +469,14 @@
  ],
  "tiles": {
   "weight": {
-   "value": 106.6,
+   "value": 106.5,
    "prev": 106.3,
-   "delta": 0.3
+   "delta": 0.2
   },
   "bodyfat": {
-   "value": 26.7,
+   "value": 26.8,
    "prev": 26.4,
-   "delta": 0.3
+   "delta": 0.4
   },
   "distance": {
    "value": 9.9,
@@ -524,10 +524,10 @@
    "area": "Body",
    "unit": "kg",
    "start": 106.58,
-   "current": 106.6,
+   "current": 106.5,
    "target": 95.0,
-   "pct": 0,
-   "pace": 5,
+   "pct": 1,
+   "pace": 6,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -539,10 +539,10 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.5,
+   "current": 26.6,
    "target": 10.0,
-   "pct": 8,
-   "pace": 5,
+   "pct": 7,
+   "pace": 6,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -557,7 +557,7 @@
    "current": 55.0,
    "target": 100.0,
    "pct": 25,
-   "pace": 5,
+   "pace": 6,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -572,7 +572,7 @@
    "current": 60.0,
    "target": 142.5,
    "pct": 20,
-   "pace": 5,
+   "pace": 6,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -587,7 +587,7 @@
    "current": 80.0,
    "target": 190.0,
    "pct": 15,
-   "pace": 5,
+   "pace": 6,
    "basis": "Best logged set of 5 in Hevy",
    "start_date": "2026-11-08",
    "deadline": "2027-10-17",
@@ -602,7 +602,7 @@
    "current": 1567.0,
    "target": 1200.0,
    "pct": 39,
-   "pace": 5,
+   "pace": 6,
    "basis": "Fastest Saturday 5k on Garmin",
    "start_date": "2026-11-08",
    "deadline": "2027-10-16",
@@ -617,7 +617,7 @@
    "current": 8100.0,
    "target": 6300.0,
    "pct": 0,
-   "pace": 5,
+   "pace": 6,
    "basis": "Starting time",
    "start_date": "2026-11-08",
    "deadline": "2027-10-10",
@@ -787,6 +787,15 @@
     "avg_fat": 26.5,
     "fat_mass": 28.82,
     "lean": 77.46
+   },
+   {
+    "date": "2026-11-27",
+    "kg": 105.94,
+    "fat": 27.07,
+    "avg_kg": 106.5,
+    "avg_fat": 26.6,
+    "fat_mass": 28.68,
+    "lean": 77.26
    }
   ],
   "lifts": {
