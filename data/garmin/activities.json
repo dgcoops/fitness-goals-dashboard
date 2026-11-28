@@ -2615,6 +2615,7 @@
   "minActivityLapDuration": 117.35700225830078,
   "minElevation": 24.799999237060547,
   "minTemperature": 13.0,
+  "moderateIntensityMinutes": 1,
   "movingDuration": 2503.696990966797,
   "normPower": 418.0,
   "ownerDisplayName": "6414197a-4abb-47e1-bc5e-aa6817d74e3a",
@@ -2720,6 +2721,7 @@
    "summarizedDiveGases": []
   },
   "trainingEffectLabel": "AEROBIC_BASE",
+  "vigorousIntensityMinutes": 40,
   "waterEstimated": 691.0
  }
 ]
