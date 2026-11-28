@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T17:49+00:00",
+ "generated": "2026-11-28T08:21+00:00",
  "final_day": "2027-10-17",
  "week": {
   "start": "2026-11-23",
@@ -56,7 +56,7 @@
      "gym_planned": false,
      "gym_done": false,
      "run_planned": true,
-     "run_done": false
+     "run_done": true
     },
     {
      "date": "2026-11-29",
@@ -468,7 +468,15 @@
   },
   {
    "date": "2026-11-28",
-   "items": []
+   "items": [
+    {
+     "kind": "run",
+     "title": "Run",
+     "name": "Bedford - <150bpm",
+     "minutes": 42,
+     "km": 6.8
+    }
+   ]
   },
   {
    "date": "2026-11-29",
@@ -487,9 +495,9 @@
    "delta": 0.4
   },
   "distance": {
-   "value": 9.9,
+   "value": 16.7,
    "prev": 14.2,
-   "pct": -30
+   "pct": 18
   },
   "gym": {
    "value": 3,
@@ -547,9 +555,9 @@
    "area": "Body",
    "unit": "%",
    "start": 27.88,
-   "current": 26.6,
+   "current": 26.8,
    "target": 10.0,
-   "pct": 7,
+   "pct": 6,
    "pace": 6,
    "basis": "Withings on Mon 9 Nov",
    "start_date": "2026-11-08",
@@ -804,6 +812,15 @@
     "avg_fat": 26.6,
     "fat_mass": 28.68,
     "lean": 77.26
+   },
+   {
+    "date": "2026-11-28",
+    "kg": 106.45,
+    "fat": 27.15,
+    "avg_kg": 106.5,
+    "avg_fat": 26.8,
+    "fat_mass": 28.9,
+    "lean": 77.55
    }
   ],
   "lifts": {
